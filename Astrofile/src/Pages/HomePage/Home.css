@@ -1,0 +1,511 @@
+/* General Styles */
+.Bgimage {
+  width: 100%;
+  height: 100%;
+  padding: 0 !important;
+}
+
+.Bgimage img {
+  width: 100%;
+  height: 100%;
+}
+
+.marquee-container {
+  width: 300px;
+  letter-spacing: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  background: var(--dark-orange);
+  color: white;
+  padding: 0.5rem;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.mainbg {
+  background-color: var(--bg-light-cream);
+}
+
+.content_title {
+  font-family: Playfair Display;
+  color: var(--text-color);
+  letter-spacing: 3px;
+  margin-left: 5%;
+}
+
+.content_title h2 {
+  font-weight: 700;
+}
+
+
+.Panchangdetail {
+  margin-left: 5%;
+  background: white;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.TopPanchang {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panchangdate h2 {
+  font-size: 1.5rem;
+  font-family: Playfair Display;
+  color: var(--text-color);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.panchangdate h4 {
+  color: black;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+.detailpanchangbtn a {
+  text-decoration: none;
+  background: var(--dark-orange);
+  color: white;
+  border-radius: 0.25rem;
+  font-family: Playfair Display;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 0.75rem;
+}
+
+
+.currentdate {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.currentdate hr {
+  flex-grow: 1;
+  border: none;
+  border-top: 1px solid black;
+  margin: 0 10px;
+}
+
+.currentdate span {
+  padding: 0 10px;
+}
+
+.sunrise, .Moonrise {
+  color: white;
+  text-align: center;
+}
+
+
+.sunrise {
+  background: var(--dark-orange);
+}
+
+.Moonrise {
+  background: var(--dark-blue);
+}
+
+.sunrise  img {
+  width: 50%;
+}
+.Moonrise  img {
+  width: 50%;
+}
+
+.Moonrise h1, .sunrise h1 {
+  font-size: 1rem;
+}
+
+.bighr {
+  color: var(--dark-orange);
+  border: 1px solid;
+}
+
+.outsideborder {
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
+}
+
+/* Article News */
+
+.card-img-top {
+  
+  width: 100%; 
+  height: 200px; 
+  object-fit: cover; 
+  border-radius: 0.5rem;
+}
+
+.content-title-news {
+  font-family: Playfair Display;
+  color: var(--text-color);
+  letter-spacing: 3px;
+}
+
+.content-title-news h2 {
+  font-weight: 700;
+}
+
+.card-title {
+  font-family: "Georgia", serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.card-body .card-text {
+  font-weight: 600;
+  font-size: 16px;
+  color: #000;
+  letter-spacing: 1px;
+  
+}
+
+.card-body .card-description {
+  color: #7c7c7c;
+  font-size: 15px;
+  font-weight: 600;
+  max-height: 80px;
+  padding: 0.5rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limits text to 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.detail-blog {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.detail-blog .detail-blog-btn {
+  background-color: var(--dark-orange);
+  color: black;
+  border: none;
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 0.50rem 0.75rem;
+  text-decoration: none;
+}
+
+.detail-blog-btn:hover {
+  color: white;
+  background: #e05f13;
+}
+
+/* ======Social feed ======== */
+
+.content-title-media {
+  font-family: Playfair Display;
+  color: var(--text-color);
+  letter-spacing: 3px;
+}
+
+.content-title-media h2 {
+  font-weight: 700;
+}
+
+
+.videodetail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* Space between video cards */
+}
+
+.Videocard {
+  border: none;
+  background: transparent;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card-body h5 {
+  text-align: left;
+  font-family: "Playfair Display", serif;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: black;
+}
+
+.card-body p {
+  text-align: justify;
+  color: black;
+  max-height: 80px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limits text to 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.view-all-feed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.All-Feed {
+  background-color: var(--dark-orange);
+  color: black;
+  border: none;
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 0.50rem 0.75rem;
+  text-decoration: none;
+}
+
+.All-Feed:hover {
+  color: white;
+    background: #e05f13;
+}
+
+/* Our Services */
+
+.service_title {
+  font-family: Playfair Display;
+  color: var(--text-color);
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.service_title h2 {
+  font-weight: 700;
+}
+
+.serviceContainer {
+  background: white;
+}
+
+.hinditext {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.closehand {
+  margin: auto;
+  text-align: center;
+}
+
+.closehand img {
+  max-width: 30%;
+  height: auto;
+}
+
+.closehand p {
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #000;
+}
+
+.topbanner {
+  background: linear-gradient(90.77deg, #ffffff 0.66%, #ff9933 101.24%);
+  display: flex;
+  padding: 2rem 3rem;
+  align-items: center;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2),
+              0 6px 10px rgba(0, 0, 0, 0.15),
+              0 9px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+.ViewServicebtn {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.ViewServicebtn .ViewAllbtn {
+  background-color: var(--dark-orange);
+  color: black;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0.75rem 3rem;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1rem;
+  font-family: Playfair Display;
+}
+
+.ViewServicebtn .ViewAllbtn:hover {
+  background-color: #e05f13;
+  color: white;
+}
+
+.bannerimg img {
+  height: 100px;
+  width: 100px;
+  position: relative;
+  border-radius: 50px;
+  animation: rotate360 7s linear infinite; 
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.topbannerText {
+  max-width: 70%;
+  margin: auto;
+}
+
+.topbannerText p {
+  color: black;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.arrowrender a {
+  text-decoration: none;
+  color: black;
+  font-size: 2rem;
+}
+
+@media only screen and (max-width: 1350px) {
+  .detailpanchangbtn a {
+    padding: 0.50rem 0.20rem;
+  }
+
+  .panchangdate h2 {
+    font-size: 1.2rem;
+  }
+
+
+
+}
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+
+  .reverceColumn{
+    flex-direction: column-reverse;
+  }
+  
+  .marquee-container {
+    padding: 0;
+  }
+
+  .Panchangdetail {
+    margin: 0;
+  }
+
+  .panchangdate h2 {
+    font-size: 1rem;
+  }
+
+  .detailpanchangbtn a {
+    padding: 1rem 0.50rem;
+  }
+
+
+  .topbannerText p {
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+
+  .topbanner {
+    padding: 1rem;
+  }
+
+  .mainicondiv {
+    display: none;
+  }
+
+  .card-img-top {
+    width: 70%; 
+    height: 130px; 
+    object-fit: cover; 
+    border-radius: 0.5rem;
+  }
+
+  .card-body h5 {
+    font-size: 1.1rem; /* Reduce font size */
+    letter-spacing: 0.5px; /* Adjust letter-spacing for readability */
+    text-align: center; /* Center-align for better mobile display */
+  }
+
+  .card-body p {
+    font-size: 0.9rem; /* Smaller font size for mobile */
+    max-height: 60px; /* Reduce max height on mobile */
+    -webkit-line-clamp: 2; /* Limit to 2 lines on smaller screens */
+  }
+
+ .detail-blog-btn {
+  font-size: 0.9rem; 
+  text-align: center;
+  }
+
+  /* Button adjustments for mobile */
+  .view-all-feed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem; /* Add spacing above button */
+  }
+
+  .All-Feed {
+    font-size: 0.9rem; /* Reduce font size for button */
+    text-align: center;
+  }
+
+}
+
+@media (max-width: 576px) {
+  .col-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .card-body h5 {
+    font-size: 1rem;
+   text-align: left;
+    width: 100%;
+  }
+
+  .service-name h5 {
+    font-size: 0.75rem;
+  }
+
+  .card-body p {
+    font-size: 0.85rem; /* Even smaller for extra-small screens */
+      padding: 0 !important;
+  }
+
+  .detail-blog-btn {
+    font-size: 0.9rem; 
+    text-align: center;
+    }
+
+  .All-Feed {
+    font-size: 0.85rem;
+  }
+
+  .card-body .card-description {
+    padding: 0 !important;
+
+
+  }
+
+}

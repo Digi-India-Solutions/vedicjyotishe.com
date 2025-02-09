@@ -1,0 +1,73 @@
+.designstar {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .designstar img {
+    width: 20% !important;
+
+  }
+
+.blogpage {
+    color: var(--text-color);
+    font-family: Playfair Display;
+    text-align: center;
+}
+
+.blogpage h1 {
+    font-weight: 500;
+}
+
+.news-card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: white;
+  }
+  
+  .card-title {
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .card-text {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000;
+    letter-spacing: 1px;
+  }
+  
+  
+  .card-link {
+    font-weight: 500;
+    color: var(--dark-blue);
+    display: flex;
+    justify-content: end;
+  }
+  
+ 
+
+  
+  @media (max-width: 768px) {
+    
+    .news-card {
+      margin: 0; 
+      padding: 1rem; 
+    }
+  
+    .card-title {
+      font-size: 16px; 
+    }
+  
+    .card-text {
+      font-size: 14px; 
+    }
+
+    .card-description {
+      max-height: 80px; 
+      overflow-y: auto; 
+      font-size: 14px; 
+    }
+
+   
+  }

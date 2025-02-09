@@ -1,0 +1,97 @@
+.designstar {
+  display: flex;
+  justify-content: center;
+}
+
+.designstar img {
+  width: 20% !important; /* Keep this unchanged for desktop */
+}
+
+.aboutpage {
+  color: var(--text-color);
+  font-family: Playfair Display;
+  text-align: center;
+}
+
+.aboutpage h1 {
+  font-weight: 500;
+}
+
+.Rashifal {
+  padding: 4rem;
+  padding-top: 0;
+}
+
+.Rashifal img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  animation: rotate 8s linear infinite;
+  overflow: hidden;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.RashifalText {
+  padding: 5rem 4rem 4rem 4rem;
+  text-align: center;
+}
+
+.RashifalText p {
+  text-align: justify;
+  color: var(--text-color);
+  letter-spacing: 2px;
+  font-weight: 500;
+  width: 90%;
+}
+
+/* Responsive Design */
+
+/* Tablet screens (up to 768px) */
+@media (max-width: 768px) {
+  .designstar img {
+    width: 100%; /* Adjust the image width for tablets */
+  }
+
+  .Rashifal {
+    padding: 2rem; /* Reduce padding */
+    overflow: hidden;
+  }
+
+  .RashifalText {
+    padding: 2rem; /* Reduce padding */
+  }
+
+  .RashifalText p {
+    width: 100%; /* Full width text on smaller screens */
+  }
+}
+
+/* Mobile screens (up to 576px) */
+@media (max-width: 576px) {
+  .designstar img {
+    width: 60%; /* Further reduce image size for mobile */
+  }
+
+  .Rashifal {
+    padding: 1.75rem; /* Further reduce padding for mobile */
+    overflow: hidden;
+  }
+
+  .RashifalText {
+    padding: 1rem; /* Further reduce padding */
+    text-align: left; /* Align text to left on mobile for better readability */
+  }
+
+  .RashifalText p {
+    width: 100%; /* Full width on mobile */
+    letter-spacing: 1px; /* Reduce letter spacing for better readability */
+  }
+}

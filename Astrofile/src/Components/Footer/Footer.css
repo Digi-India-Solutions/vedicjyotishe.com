@@ -1,0 +1,284 @@
+/* Desktop Design - Unchanged */
+.weblogo img {
+  height: 150px;
+}
+
+.imgdesc {
+  color: black;
+  letter-spacing: 1px;
+  font-weight: 500;
+  max-width: 70%;
+  padding-left: 1rem;
+}
+
+.socialLogo {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding-left: 1rem;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--dark-orange);
+  padding: 8px;
+}
+
+.link a {
+  color: orange;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.link:hover {
+  background-color: var(--dark-orange);
+}
+
+.link:hover a {
+  color: white;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-top: 2px solid whitesmoke;
+  border-bottom: 2px solid whitesmoke;
+}
+
+.contact-info .call-info,
+.contact-info .Email-info {
+  display: flex;
+  align-items: center;
+}
+
+.phoneicon,
+.mailicon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid var(--dark-orange);
+  padding: 10px;
+}
+
+.phone-icon,
+.mail-icon {
+  color: var(--text-color);
+  font-size: 2rem;
+}
+
+.callnumber,
+.mailid {
+  padding-left: 1.5rem;
+  padding-top: 1rem;
+}
+
+.callnumber p,
+.mailid p {
+  color: var(--dark-orange);
+  margin-bottom: 0;
+}
+
+.callnumber a,
+.mailid a {
+  text-decoration: none;
+  color: black;
+  margin-top: 0;
+  
+}
+
+.user-links {
+  border-right: 2px solid whitesmoke;
+  margin-top: 4rem;
+}
+
+.footer-title {
+  font-family: Playfair Display;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: var(--dark-orange);
+  font-weight: 600;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 40px;
+}
+
+.inner-Link {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.inner-Link:hover {
+  color: var(--dark-orange);
+  font-weight: 600;
+}
+
+.email-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.email-input {
+  padding: 10px;
+  border: 2px solid var(--text-color);
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: black;
+  font-family: Playfair Display;
+  font-weight: bold;
+}
+
+.input-error {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.submit-btn {
+  background-color: var(--dark-orange);
+  color: black;
+  font-family: Playfair Display;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 20px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #e67e00;
+}
+
+.hr-line {
+  border: 2px solid black;
+}
+
+.Linkcss {
+  text-decoration: none;
+  color: black;
+}
+
+.Linkcss:hover {
+  color: var(--dark-orange);
+  font-weight: 500;
+}
+
+/* Responsive Design */
+
+/* Tablet screens (up to 768px wide) */
+@media (max-width: 768px) {
+  .weblogo img {
+    height: 100px;
+  }
+
+  .imgdesc {
+    max-width: 100%; /* Full width on smaller screens */
+    padding-left: 0;
+  }
+
+  .socialLogo {
+    justify-content: flex-start;
+    padding-left: 0;
+  }
+
+  .link {
+    width: 35px;
+    height: 35px;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .callnumber,
+  .mailid {
+    padding-left: 0;
+  }
+
+  .user-links {
+    border: none;
+    text-align: left;
+  }
+}
+
+/* Mobile screens (up to 576px wide) */
+@media (max-width: 576px) {
+  .weblogo {
+    text-align: left;
+  }
+  
+  .weblogo img {
+    height: 100px;
+  }
+
+  .contact-info {
+    padding: 0;
+    align-content: flex-start;
+    text-align: left;
+  }
+
+  .call-info .callnumber {
+    margin-left: 1rem;
+  }
+  .Email-info .mailid {
+    margin-left: 1rem;
+  }
+
+
+  .user-links {
+    border: none;
+    text-align: left;
+    margin: 0;
+  }
+
+  .email-form {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .email-input {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+
+  .footer-title {
+    text-align: left;
+  }
+
+  .footer-links {
+    text-align: left;
+    line-height: 30px;
+  }
+
+  .hr-line {
+    margin-top: 1rem;
+  }
+}

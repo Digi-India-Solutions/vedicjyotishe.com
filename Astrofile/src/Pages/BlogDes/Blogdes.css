@@ -1,0 +1,77 @@
+.blogdes {
+    color: black;
+    font-family: Playfair Display;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    text-transform: capitalize;
+}
+
+.blogdes h1 {
+    font-weight: 500;
+    width: 55%;
+}
+
+.blogtext {
+    width: 50%;
+    margin: auto;
+}
+
+.blogtext p {
+    color: black;
+    letter-spacing: 1px;
+    font-family: Playfair Display;
+    font-weight: 500;
+}
+
+.blogtext h2 {
+    color: black;
+    font-weight: 600;
+}
+
+.blogtext .blogimg img {
+    width: 100%;
+}
+
+.bloglist ul li {
+    color: black;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) { /* Tablet */
+    .blogdes h1 {
+        width: 70%;
+    }
+
+    .blogtext {
+        width: 70%;
+    }
+}
+
+@media (max-width: 768px) { /* Small Tablets and large phones */
+    .blogdes {
+        flex-direction: column;
+    }
+
+    .blogdes h1 {
+        width: 90%;
+    }
+
+    .blogtext {
+        width: 85%;
+    }
+}
+
+@media (max-width: 576px) { /* Phones */
+    .blogdes h1 {
+        width: 100%;
+    }
+
+    .blogtext {
+        width: 100%;
+    }
+
+    .blogtext p, .blogtext h2 {
+        font-size: 16px;
+    }
+}
