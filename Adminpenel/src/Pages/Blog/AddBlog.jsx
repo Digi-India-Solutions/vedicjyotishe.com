@@ -44,7 +44,7 @@ const AddBlog = () => {
 
         try {
             // Replace with your API endpoint
-            const response = await axios.post('https://www.api.vedicjyotishe.com/api/add-blog', dataToSend, {
+            const response = await axios.post('https://api.vedicjyotishe.com/api/add-blog', dataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

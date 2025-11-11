@@ -18,7 +18,7 @@ const EditDay = () => {
     useEffect(() => {
         const fetchDayData = async () => {
             try {
-                const response = await axios.get(`https://www.api.vedicjyotishe.com/api/get-day/${id}`);
+                const response = await axios.get(`https://api.vedicjyotishe.com/api/get-day/${id}`);
                 if (response.status === 200) {
                     const { sunRiseTime, sunsetTime, moonRiseTime, moonsetTime } = response.data.data;
                     setDayData({
@@ -67,7 +67,7 @@ const EditDay = () => {
         };
 
         try {
-            const response = await axios.put(`https://www.api.vedicjyotishe.com/api/update-day/${id}`, formattedData);
+            const response = await axios.put(`https://api.vedicjyotishe.com/api/update-day/${id}`, formattedData);
             if (response.status === 200) {
                 toast.success("Day record updated successfully");
                 navigate("/all-panchang");

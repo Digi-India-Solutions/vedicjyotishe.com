@@ -43,7 +43,7 @@ const Kundali = () => {
 
   const getApiData = async () => {
     try {
-      const res = await axios.get(`https://www.api.vedicjyotishe.com/api/get-service-by-name/${name}`);
+      const res = await axios.get(`https://api.vedicjyotishe.com/api/get-service-by-name/${name}`);
       console.log(res)
       setData(res.data.data);
       setFormData((prevData) => ({
@@ -94,7 +94,7 @@ const Kundali = () => {
     e.preventDefault();
     try {
       console.log(formData)
-      const inquiryRes = await axios.post(`https://www.api.vedicjyotishe.com/api/send-service-inquery`, formData);
+      const inquiryRes = await axios.post(`https://api.vedicjyotishe.com/api/send-service-inquery`, formData);
       const { orderId, amount } = inquiryRes.data.data;
 
       const options = {
@@ -107,7 +107,7 @@ const Kundali = () => {
         handler: async function (response) {
           console.log(response);
           // Verify the payment
-          const verificationResponse = await axios.post('https://www.api.vedicjyotishe.com/api/verify-payment', {
+          const verificationResponse = await axios.post('https://api.vedicjyotishe.com/api/verify-payment', {
             razorpay_payment_id: response.razorpay_payment_id,
             razorpay_order_id: response.razorpay_order_id,
             razorpay_signature: response.razorpay_signature,
@@ -193,7 +193,7 @@ const Kundali = () => {
             <div className="row">
               <div className="col-md-5">
                 <div className="kundaliganesh">
-                  <img src={`https://www.api.vedicjyotishe.com/${data.serviceImage}`} alt="KundaliGanesh" />
+                  <img src={`https://api.vedicjyotishe.com/${data.serviceImage}`} alt="KundaliGanesh" />
                 </div>
               </div>
 

@@ -11,7 +11,7 @@ const AllServiceInquiry = () => {
 
     const getApiData = async () => {
         try {
-            const res = await axios.get("https://www.api.vedicjyotishe.com/api/get-service-inquery");
+            const res = await axios.get("https://api.vedicjyotishe.com/api/get-service-inquery");
             console.log(res)
             setData(res.data.data);
         } catch (error) {
@@ -68,7 +68,7 @@ const AllServiceInquiry = () => {
 
     const deleteRecord = async(id)=>{
         try {
-            const res = await axios.delete("https://www.api.vedicjyotishe.com/api/delete-service-inquery/" +id)
+            const res = await axios.delete("https://api.vedicjyotishe.com/api/delete-service-inquery/" +id)
             if(res.status===200){
                 toast.success("Inquery Delete Successfully")
                 getApiData()

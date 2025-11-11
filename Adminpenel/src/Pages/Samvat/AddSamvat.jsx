@@ -50,7 +50,7 @@ const AddSamvat = () => {
         };
 
         try {
-            const response = await axios.post('https://www.api.vedicjyotishe.com/api/create-samvat', newFormData);
+            const response = await axios.post('https://api.vedicjyotishe.com/api/create-samvat', newFormData);
             if(response.status===200){
                 toast.success("New Samvat created successfully!");
                 navigate("/all-panchang");

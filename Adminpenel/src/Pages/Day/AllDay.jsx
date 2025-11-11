@@ -15,7 +15,7 @@ const AllDay = () => {
 
     const fetchDays = async () => {
         try {
-            const response = await axios.get('https://www.api.vedicjyotishe.com/api/get-day');
+            const response = await axios.get('https://api.vedicjyotishe.com/api/get-day');
             if (response.status === 200) {
                 setDays(response.data.data);
                 setIsLoading(false);
@@ -39,7 +39,7 @@ const AllDay = () => {
 
         if (confirmDelete.isConfirmed) {
             try {
-                const res = await axios.delete(`https://www.api.vedicjyotishe.com/api/delete-day/${id}`);
+                const res = await axios.delete(`https://api.vedicjyotishe.com/api/delete-day/${id}`);
                 if (res.status === 200) {
                     toast.success("Day deleted successfully");
                     fetchDays()

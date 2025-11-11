@@ -33,7 +33,7 @@ const OurServices = () => {
 
   const getServiceData = async () => {
     try {
-      const res = await axios.get("https://www.api.vedicjyotishe.com/api/get-service")
+      const res = await axios.get("https://api.vedicjyotishe.com/api/get-service")
       console.log(res)
       const reverseData = res.data.data
       setServices(reverseData.reverse())
@@ -49,7 +49,7 @@ const OurServices = () => {
 
   const getArrowData = async () => {
     try {
-      const res = await axios.get("https://www.api.vedicjyotishe.com/api/get-kundali-service")
+      const res = await axios.get("https://api.vedicjyotishe.com/api/get-kundali-service")
       setArrowData(res.data.data)
     } catch (error) {
       console.log(error)
@@ -129,7 +129,7 @@ const OurServices = () => {
                       {services.map((service, index) => (
                         <div key={index} className="col-md-4 col-6 any">
                           <div className="text-center">
-                            <img data-aos="fade-up" data-aos-duration="2000" src={`https://www.api.vedicjyotishe.com/${service.serviceLogo}`} alt={service.title} className="img-fluid mb-2" style={{ height: "100px" }} />
+                            <img data-aos="fade-up" data-aos-duration="2000" src={`https://api.vedicjyotishe.com/${service.serviceLogo}`} alt={service.title} className="img-fluid mb-2" style={{ height: "100px" }} />
                             <div className="imagetitle">
                               <h5>{service.serviceName}</h5>
                             </div>

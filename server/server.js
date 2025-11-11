@@ -2,6 +2,7 @@ const dotenv = require("dotenv")
 dotenv.config()
 const express = require("express")
 const cors = require("cors")
+
 const { connectDB } = require("./DB/connectDB")
 const SignupRouter = require("./Routers/SignupRouter")
 const MonthsRouter = require("./Routers/MonthRouter")
@@ -25,7 +26,7 @@ app.use("/Public", express.static("Public"))
 
 
 app.get("/", (req, res) => {
-    res.send("Server Is Running")
+    res.send("Server Is Running Successfully")
 })
 
 app.use("/api", SignupRouter)

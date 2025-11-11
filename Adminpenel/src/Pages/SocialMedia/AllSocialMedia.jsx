@@ -12,7 +12,7 @@ const AllSocialMedia = () => {
     useEffect(() => {
         const fetchSocialMediaData = async () => {
             try {
-                const response = await axios.get('https://www.api.vedicjyotishe.com/api/get-all-vedio');
+                const response = await axios.get('https://api.vedicjyotishe.com/api/get-all-vedio');
                 if (response.data.success) {
                     setSocialMediaData(response.data.data);
                 } else {
@@ -43,7 +43,7 @@ const AllSocialMedia = () => {
         if (confirmDelete.isConfirmed) {
             try {
                 // Make your DELETE request here
-                const response = await axios.delete(`https://www.api.vedicjyotishe.com/api/delete-vedio/${id}`);
+                const response = await axios.delete(`https://api.vedicjyotishe.com/api/delete-vedio/${id}`);
                 if (response.data.success) {
                     toast.success("Social media link deleted successfully!");
                     setSocialMediaData((prevData) => prevData.filter(item => item._id !== id));

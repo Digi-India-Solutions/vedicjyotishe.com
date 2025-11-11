@@ -9,7 +9,7 @@ const GetInTouch = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://www.api.vedicjyotishe.com/api/get-record');
+                const response = await axios.get('https://api.vedicjyotishe.com/api/get-record');
                 if (response.data.success) {
                     setRecords(response.data.data); // Update state with fetched data
                 }
@@ -26,7 +26,7 @@ const GetInTouch = () => {
     // Handle status update
     const updateStatus = async (id) => {
         try {
-            const response = await axios.put(`https://www.api.vedicjyotishe.com/api/update-record/${id}`, { status: "Complete" });
+            const response = await axios.put(`https://api.vedicjyotishe.com/api/update-record/${id}`, { status: "Complete" });
             if (response.data.success) {
                 setRecords(prevRecords =>
                     prevRecords.map(record =>
@@ -42,7 +42,7 @@ const GetInTouch = () => {
     // Handle record deletion
     const deleteRecord = async (id) => {
         try {
-            const response = await axios.delete(`https://www.api.vedicjyotishe.com/api/delete-record/${id}`);
+            const response = await axios.delete(`https://api.vedicjyotishe.com/api/delete-record/${id}`);
             if (response.data.success) {
                 setRecords(prevRecords => prevRecords.filter(record => record._id !== id));
             }

@@ -12,7 +12,7 @@ const AllBlog = () => {
 
     const fetchBlogs = async () => {
         try {
-            const response = await axios.get('https://www.api.vedicjyotishe.com/api/get-blog');
+            const response = await axios.get('https://api.vedicjyotishe.com/api/get-blog');
             if (response.data.success) {
                 setBlogs(response.data.data); // Set blogs state with the fetched data
             } else {
@@ -42,7 +42,7 @@ const AllBlog = () => {
 
     const deleteBlog = async (id) => {
         try {
-            const res = await axios.delete("https://www.api.vedicjyotishe.com/api/delete-blog/" + id)
+            const res = await axios.delete("https://api.vedicjyotishe.com/api/delete-blog/" + id)
             console.log(res)
             if (res.status === 200) {
                 toast.success(res.data.message)
@@ -98,10 +98,10 @@ const AllBlog = () => {
                                 <td>{blog.blogDetails}</td>
                                 <td>
                                     <img
-                                        src={`https://www.api.vedicjyotishe.com/${blog.blogImage}`}
+                                        src={`https://api.vedicjyotishe.com/${blog.blogImage}`}
                                         alt={blog.blogHeading}
                                         style={{ cursor: 'pointer', width: '100px', height: 'auto' }}
-                                        onClick={() => handleImageClick(`https://www.api.vedicjyotishe.com/${blog.blogImage}`)} // Set the image source when clicked
+                                        onClick={() => handleImageClick(`https://api.vedicjyotishe.com/${blog.blogImage}`)} // Set the image source when clicked
                                     />
                                 </td>
                                 <td>

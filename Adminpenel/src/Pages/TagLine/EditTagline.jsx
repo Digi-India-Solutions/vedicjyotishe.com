@@ -17,7 +17,7 @@ const EditTagline = () => {
     useEffect(() => {
         const fetchTagLineData = async () => {
             try {
-                const response = await axios.get(`https://www.api.vedicjyotishe.com/api/get-single-tagline/${id}`);
+                const response = await axios.get(`https://api.vedicjyotishe.com/api/get-single-tagline/${id}`);
                 if (response.status===200) {
                     setFormData(response.data.data);
                 } else {
@@ -46,7 +46,7 @@ const EditTagline = () => {
         e.preventDefault();
         setBtnLoading(true);
         try {
-            const response = await axios.put(`https://www.api.vedicjyotishe.com/api/update-tagline/${id}`, formData);
+            const response = await axios.put(`https://api.vedicjyotishe.com/api/update-tagline/${id}`, formData);
             if (response.status===200) {
                 toast.success("Tagline updated successfully!");
                 navigate("/all-tagline"); // Redirect after success

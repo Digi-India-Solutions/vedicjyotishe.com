@@ -24,7 +24,7 @@ const Socialfeed = () => {
   const getPostData = async () => {
     try {
       const res = await axios.get(
-        "https://www.api.vedicjyotishe.com/api/get-all-vedio"
+        "https://api.vedicjyotishe.com/api/get-all-vedio"
       );
       console.log(res);
       setPosts(res.data.data);

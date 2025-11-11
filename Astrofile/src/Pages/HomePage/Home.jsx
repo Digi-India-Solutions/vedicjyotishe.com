@@ -18,7 +18,7 @@ const Home = () => {
   const getDayData = async () => {
     try {
       const res = await axios.get(
-        "https://www.api.vedicjyotishe.com/api/get-day"
+        "https://api.vedicjyotishe.com/api/get-day"
       );
       setDay(res.data.data[0]);
     } catch (error) {
@@ -30,7 +30,7 @@ const Home = () => {
   const getMonthData = async () => {
     try {
       const res = await axios.get(
-        "https://www.api.vedicjyotishe.com/api/get-month"
+        "https://api.vedicjyotishe.com/api/get-month"
       );
       // console.log(res)
       setMonth(res.data.data[0]);
@@ -43,7 +43,7 @@ const Home = () => {
   const getSamvatData = async () => {
     try {
       const res = await axios.get(
-        "https://www.api.vedicjyotishe.com/api/get-samvat"
+        "https://api.vedicjyotishe.com/api/get-samvat"
       );
       // console.log(res)
       setSamvat(res.data.data[0]);
@@ -94,7 +94,7 @@ const Home = () => {
   const getServiceData = async () => {
     try {
       const res = await axios.get(
-        "https://www.api.vedicjyotishe.com/api/get-service"
+        "https://api.vedicjyotishe.com/api/get-service"
       );
       const reverseData = res.data.data;
       setServices(reverseData.reverse());
@@ -111,7 +111,7 @@ const Home = () => {
   const getBlogData = async () => {
     try {
       const res = await axios.get(
-        "https://www.api.vedicjyotishe.com/api/get-blog"
+        "https://api.vedicjyotishe.com/api/get-blog"
       );
       setBlog(res.data.data);
       // console.log(res)
@@ -128,7 +128,7 @@ const Home = () => {
   const getPostData = async () => {
     try {
       const res = await axios.get(
-        "https://www.api.vedicjyotishe.com/api/get-all-vedio"
+        "https://api.vedicjyotishe.com/api/get-all-vedio"
       );
       // console.log(res);
       setPosts(res.data.data);
@@ -148,7 +148,7 @@ const Home = () => {
 
   const getArrowData = async () => {
     try {
-      const res = await axios.get("https://www.api.vedicjyotishe.com/api/get-kundali-service")
+      const res = await axios.get("https://api.vedicjyotishe.com/api/get-kundali-service")
       setArrowData(res.data.data)
     } catch (error) {
       console.log(error)
@@ -164,7 +164,7 @@ const Home = () => {
 
   const getTagLine = async () => {
     try {
-      const res = await axios.get("https://www.api.vedicjyotishe.com/api/get-tagline")
+      const res = await axios.get("https://api.vedicjyotishe.com/api/get-tagline")
       setTagline(res.data.data[0])
     } catch (error) {
       console.log(error)
@@ -397,7 +397,7 @@ const Home = () => {
                               <img
                                 data-aos="fade-up"
                                 data-aos-duration="2000"
-                                src={`https://www.api.vedicjyotishe.com/${service.serviceLogo}`}
+                                src={`https://api.vedicjyotishe.com/${service.serviceLogo}`}
                                 alt={service.title}
                                 className="img-fluid mb-2"
                                 style={{ height: "80px" }}
@@ -450,7 +450,7 @@ const Home = () => {
                       <div className="news">
                         <h5 className="card-title py-2">What's the news?</h5>
                         <img
-                          src={`https://www.api.vedicjyotishe.com/${item.blogImage}`}
+                          src={`https://api.vedicjyotishe.com/${item.blogImage}`}
                           className="card-img-top"
                           alt="news"
                         />

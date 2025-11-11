@@ -10,7 +10,7 @@ const AllMonths = () => {
 
     const getApiData = async () => {
         try {
-            const res = await axios.get("https://www.api.vedicjyotishe.com/api/get-month");
+            const res = await axios.get("https://api.vedicjyotishe.com/api/get-month");
             if (res.status === 200) {
                 setData(res.data.data);
             }
@@ -36,7 +36,7 @@ const AllMonths = () => {
             });
 
             if (result.isConfirmed) {
-                const res = await axios.delete(`https://www.api.vedicjyotishe.com/api/delete-month/${id}`);
+                const res = await axios.delete(`https://api.vedicjyotishe.com/api/delete-month/${id}`);
                 if (res.status === 200) {
                     getApiData();
                     toast.success("Record deleted successfully");

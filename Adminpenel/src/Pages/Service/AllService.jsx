@@ -10,7 +10,7 @@ const AllService = () => {
 
     const fetchServices = async () => {
         try {
-            const response = await axios.get('https://www.api.vedicjyotishe.com/api/get-service');
+            const response = await axios.get('https://api.vedicjyotishe.com/api/get-service');
             console.log(response)
             if (response.status === 200) {
                 setServices(response.data.data);
@@ -33,7 +33,7 @@ const AllService = () => {
     // Handle delete action (optional, can be added later)
     const handleDelete = async (id) => {
         try {
-            const res = await axios.delete("https://www.api.vedicjyotishe.com/api/delete-service/" + id)
+            const res = await axios.delete("https://api.vedicjyotishe.com/api/delete-service/" + id)
             if (res.status === 200) {
                 toast.success(res.data.message)
                 fetchServices()
@@ -80,10 +80,10 @@ const AllService = () => {
                                     <td>{service.serviceHeading}</td>
                                     <td>&#8377;{service.sericeFinalPrice}</td>
                                     <td>
-                                        <img src={`https://www.api.vedicjyotishe.com/${service.serviceLogo}`} alt={service.serviceName} style={{ width: '50px', height: '50px' }} />
+                                        <img src={`https://api.vedicjyotishe.com/${service.serviceLogo}`} alt={service.serviceName} style={{ width: '50px', height: '50px' }} />
                                     </td>
                                     <td>
-                                        <img src={`https://www.api.vedicjyotishe.com/${service.serviceImage}`} alt={service.serviceName} style={{ width: '50px', height: '50px' }} />
+                                        <img src={`https://api.vedicjyotishe.com/${service.serviceImage}`} alt={service.serviceName} style={{ width: '50px', height: '50px' }} />
                                     </td>
                                     <td>{service.dropDownStatus}</td>
                                     <td>

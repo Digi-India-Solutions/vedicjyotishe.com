@@ -31,7 +31,7 @@ const EditMonth = () => {
     useEffect(() => {
         const fetchMonthDetails = async () => {
             try {
-                const response = await axios.get(`https://www.api.vedicjyotishe.com/api/get-month/${id}`);
+                const response = await axios.get(`https://api.vedicjyotishe.com/api/get-month/${id}`);
                 const { TithiTill, YogTill, ...monthData } = response.data.data; // Adjusted to access data correctly
 
                 console.log('TithiTill:', TithiTill);
@@ -89,7 +89,7 @@ const EditMonth = () => {
         };
 
         try {
-            const response = await axios.put(`https://www.api.vedicjyotishe.com/api/update-month/${id}`, updatedFormData);
+            const response = await axios.put(`https://api.vedicjyotishe.com/api/update-month/${id}`, updatedFormData);
             if (response.status === 200) {
                 toast.success("Month updated successfully!");
                 navigate("/all-panchang");

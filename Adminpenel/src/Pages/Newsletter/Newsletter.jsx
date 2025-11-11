@@ -8,7 +8,7 @@ const Newsletter = () => {
     useEffect(() => {
         const fetchEmails = async () => {
             try {
-                const response = await axios.get("https://www.api.vedicjyotishe.com/api/get-newsletter");
+                const response = await axios.get("https://api.vedicjyotishe.com/api/get-newsletter");
                 setEmails(response.data.data);
             } catch (err) {
                 console.error("Error fetching emails:", err);
@@ -29,7 +29,7 @@ const Newsletter = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`https://www.api.vedicjyotishe.com/api/delete-newsletter/${id}`);
+            await axios.delete(`https://api.vedicjyotishe.com/api/delete-newsletter/${id}`);
             setEmails(emails.filter(email => email._id !== id));
         } catch (error) {
             console.error("Error deleting email:", error);
@@ -39,7 +39,7 @@ const Newsletter = () => {
 
     const handleStatusChange = async (id) => {
         try {
-            await axios.put(`https://www.api.vedicjyotishe.com/api/update-newsletter/${id}`, { status: "Complete" });
+            await axios.put(`https://api.vedicjyotishe.com/api/update-newsletter/${id}`, { status: "Complete" });
             setEmails(emails.map(email => 
                 email._id === id ? { ...email, status: "Complete" } : email
             ));

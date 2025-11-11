@@ -12,7 +12,7 @@ const AllTagline = () => {
     useEffect(() => {
         const fetchSocialMediaData = async () => {
             try {
-                const response = await axios.get('https://www.api.vedicjyotishe.com/api/get-tagline');
+                const response = await axios.get('https://api.vedicjyotishe.com/api/get-tagline');
                 console.log(response)
                 if (response.status===200) {
                     setTagline(response.data.data);
@@ -44,7 +44,7 @@ const AllTagline = () => {
         if (confirmDelete.isConfirmed) {
             try {
                 // Make your DELETE request here
-                const response = await axios.delete(`https://www.api.vedicjyotishe.com/api/delete-tagline/${id}`);
+                const response = await axios.delete(`https://api.vedicjyotishe.com/api/delete-tagline/${id}`);
                 if (response.status===200) {
                     toast.success("Tag Line deleted successfully!");
                     setTagline((prevData) => prevData.filter(item => item._id !== id));

@@ -61,7 +61,7 @@ const AddService = () => {
         });
 
         try {
-            const response = await axios.post('https://www.api.vedicjyotishe.com/api/add-service', data, {
+            const response = await axios.post('https://api.vedicjyotishe.com/api/add-service', data, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
             if (response.status === 200) {

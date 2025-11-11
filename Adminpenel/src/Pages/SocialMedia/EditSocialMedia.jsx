@@ -19,7 +19,7 @@ const EditSocialMedia = () => {
     useEffect(() => {
         const fetchSocialMediaData = async () => {
             try {
-                const response = await axios.get(`https://www.api.vedicjyotishe.com/api/get-single-vedio/${id}`);
+                const response = await axios.get(`https://api.vedicjyotishe.com/api/get-single-vedio/${id}`);
                 if (response.data.success) {
                     setFormData(response.data.data);
                 } else {
@@ -48,7 +48,7 @@ const EditSocialMedia = () => {
         e.preventDefault();
         setBtnLoading(true);
         try {
-            const response = await axios.put(`https://www.api.vedicjyotishe.com/api/update-vedio/${id}`, formData);
+            const response = await axios.put(`https://api.vedicjyotishe.com/api/update-vedio/${id}`, formData);
             if (response.data.success) {
                 toast.success("Social media link updated successfully!");
                 navigate("/all-social-media")

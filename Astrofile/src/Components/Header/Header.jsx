@@ -20,7 +20,7 @@ const Header = () => {
 
   const getApiData = async () => {
     try {
-      const res = await axios.get("https://www.api.vedicjyotishe.com/api/get-service")
+      const res = await axios.get("https://api.vedicjyotishe.com/api/get-service")
       const data = res.data.data
       const filteData = data.filter((x) => x.dropDownStatus === "True")
       setService(filteData)

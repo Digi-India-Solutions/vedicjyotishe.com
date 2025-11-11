@@ -29,7 +29,7 @@ const AddTagline = () => {
             return;
         }
         try {
-            const response = await axios.post('https://www.api.vedicjyotishe.com/api/create-tagline', formData); // Update with correct API endpoint
+            const response = await axios.post('https://api.vedicjyotishe.com/api/create-tagline', formData); // Update with correct API endpoint
             if (response.status === 201) {
                 toast.success("Tagline added successfully!");
                 navigate('/all-tagline'); // Redirect to all taglines page

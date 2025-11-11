@@ -32,7 +32,7 @@ const AddSocialMedia = () => {
             return;
         }
         try {
-            const response = await axios.post('https://www.api.vedicjyotishe.com/api/create-social-media', formData);
+            const response = await axios.post('https://api.vedicjyotishe.com/api/create-social-media', formData);
             if (response.status===200) {
                 toast.success("Social media link added successfully!");
                 navigate('/all-social-media'); 

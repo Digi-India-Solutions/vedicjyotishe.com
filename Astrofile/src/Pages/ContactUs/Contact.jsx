@@ -53,7 +53,7 @@ const Contact = () => {
 
     try {
       // Make API request to send form data
-      const response = await axios.post("https://www.api.vedicjyotishe.com/api/send-record", formData);
+      const response = await axios.post("https://api.vedicjyotishe.com/api/send-record", formData);
       
       if (response.data.success) {
         Swal.fire({

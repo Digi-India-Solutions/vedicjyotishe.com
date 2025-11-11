@@ -13,7 +13,7 @@ const Blogdes = () => {
   const [blog, setBlog] = useState([])
   const getBlogData = async () => {
     try {
-      const res = await axios.get("https://www.api.vedicjyotishe.com/api/get-blog")
+      const res = await axios.get("https://api.vedicjyotishe.com/api/get-blog")
       setBlog(res.data.data)
       // console.log(res)
     } catch (error) {
@@ -35,7 +35,7 @@ const Blogdes = () => {
 
   const getSingleBlogData = async () => {
     try {
-      const res = await axios.get("https://www.api.vedicjyotishe.com/api/get-single-blog/" + id)
+      const res = await axios.get("https://api.vedicjyotishe.com/api/get-single-blog/" + id)
       setSingleData(res.data.data)
     } catch (error) {
       console.log(error)
@@ -208,7 +208,7 @@ const Blogdes = () => {
                 <div className="col-md-4 col-6 mb-4" key={index}>
                   <div className="news-card px-3 py-2">
                     <h5 className="card-title py-2">{item.title}</h5>
-                    <img src={`https://www.api.vedicjyotishe.com/${item.blogImage}`} className="card-img-top" alt="news" />
+                    <img src={`https://api.vedicjyotishe.com/${item.blogImage}`} className="card-img-top" alt="news" />
                     <div className="card-body">
                       <p className="card-text">{item.blogHeading}</p>
                       <p className="card-description">{item.blogDetails}</p>

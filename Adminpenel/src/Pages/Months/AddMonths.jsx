@@ -50,7 +50,7 @@ const AddMonths = () => {
         };
 
         try {
-            const response = await axios.post('https://www.api.vedicjyotishe.com/api/create-month', newFormData);
+            const response = await axios.post('https://api.vedicjyotishe.com/api/create-month', newFormData);
             if(response.status===200){
                 toast.success("New Month created successfully!");
                 navigate("/all-panchang");

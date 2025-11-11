@@ -20,7 +20,7 @@ const EditBlog = () => {
     useEffect(() => {
         const fetchBlog = async () => {
             try {
-                const response = await axios.get(`https://www.api.vedicjyotishe.com/api/get-single-blog/${id}`);
+                const response = await axios.get(`https://api.vedicjyotishe.com/api/get-single-blog/${id}`);
                 if (response.data.success) {
                     const { blogHeading, blogDetails, blogDescription, blogImage } = response.data.data;
                     setFormData({
@@ -71,7 +71,7 @@ const EditBlog = () => {
         }
 
         try {
-            const response = await axios.put(`https://www.api.vedicjyotishe.com/api/update-blog/${id}`, dataToSend, {
+            const response = await axios.put(`https://api.vedicjyotishe.com/api/update-blog/${id}`, dataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

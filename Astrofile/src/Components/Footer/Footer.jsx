@@ -25,7 +25,7 @@ const Footer = () => {
       setSubmitted(true);
       setError("");
       try {
-        const response = await axios.post("https://www.api.vedicjyotishe.com/api/create-newsletter", { email });
+        const response = await axios.post("https://api.vedicjyotishe.com/api/create-newsletter", { email });
         console.log("Server response:", response.data);
         setEmail("");
         Swal.fire({
