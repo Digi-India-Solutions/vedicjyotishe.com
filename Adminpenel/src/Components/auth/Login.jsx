@@ -13,7 +13,7 @@ const Login = () => {
       toast.error('Invalid Email Address or password');
     } else {
       sessionStorage.setItem("login", true);
-      window.location.href = "/dashboard";
+      window.location.href = "/";
     }
   };
 
