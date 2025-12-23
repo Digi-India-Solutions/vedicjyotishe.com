@@ -9,11 +9,16 @@ import Servicetop from "../../Assets/Bithchart.jpg";
 import Websitebanner from "../../Assets/Websitebanner.jpg";
 import { Link } from "react-router-dom";
 import { IoMdArrowForward } from "react-icons/io";
+import { FaStar, FaChartPie, FaHome, FaHeartbeat, FaMoon, FaDice, FaGem, FaQuestion, FaCalendar, FaVial } from "react-icons/fa";
 import AOS from "aos"; // Ensure you import AOS if you're using it
 import axios from "axios";
+import EnquiryModal from "../../Components/EnquiryModal/EnquiryModal";
 
 const Home = () => {
   const [arrowData, setArrowData] = useState([])
+  const [courses, setCourses] = useState([])
+  const [showEnquiryModal, setShowEnquiryModal] = useState(false)
+  const [selectedCourse, setSelectedCourse] = useState("")
   const [day, setDay] = useState([]);
   const getDayData = async () => {
     try {
@@ -174,6 +179,44 @@ const Home = () => {
   useEffect(() => {
     getTagLine()
   }, [])
+
+  const getCourseData = async () => {
+    try {
+      const res = await axios.get(
+        "https://api.vedicjyotishe.com/api/get-course"
+      );
+      const reverseData = res.data.data;
+      setCourses(reverseData.reverse());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getCourseData();
+  }, []);
+
+  const handleEnquiryClick = (courseName) => {
+    setSelectedCourse(courseName);
+    setShowEnquiryModal(true);
+  };
+
+  const getCourseIcon = (courseName) => {
+    const iconMap = {
+      "Vedic Astrology": <FaStar />,
+      "Prashna Horary": <FaQuestion />,
+      "Nakshatra Course": <FaMoon />,
+      "Ashtakavarga": <FaChartPie />,
+      "Muhurata-Advance": <FaCalendar />,
+      "Tajika Varshaphal": <FaDice />,
+      "Medical Astrology": <FaHeartbeat />,
+      "Numerology": <FaGem />,
+      "Vastu Basic": <FaHome />,
+      "Tithi Pravesha Chart": <FaVial />
+    };
+    return iconMap[courseName] || <FaStar />;
+  };
+
   return (
     <>
       <section>
@@ -208,18 +251,13 @@ const Home = () => {
           <div className="row reverceColumn">
             <div className="col-md-4 py-2">
               <div className="content_title pb-2">
-                <h2>Panchang</h2>
+                <h2>Learn Astrology</h2>
               </div>
               <div className="Panchangdetail">
                 <div className="py-3 TopPanchang">
                   <div className="panchangdate">
-                    <h2>Aaj Ka Panchang</h2>
-                    <h4>Ujjain,India</h4>
-                  </div>
-                  <div className="detailpanchangbtn">
-                    <Link onClick={handleActiveChange} to="#">
-                      Today's Panchang
-                    </Link>
+                    <h2>Our Courses</h2>
+                    <h4>Expand Your Knowledge</h4>
                   </div>
                 </div>
 
@@ -227,128 +265,47 @@ const Home = () => {
                   <div className="currentdate">
                     <hr />
                     <span>
-                      <b>{formattedDate}</b>
+                      <b>Master Vedic Astrology</b>
                     </span>
                     <hr />
                   </div>
                 </div>
 
-                {/* Time Cards Section */}
-                <div className="row text-center my-3">
-                  <div className="col-6 col-md-6 mb-3">
-                    <div className="sunrise p-3">
-                      <img
-                        src={SunUp}
-                        alt="Sunrise"
-                        className="img-fluid mb-2"
-                      />
-                      <h1>{day.sunRiseTime}</h1>
-                    </div>
-                  </div>
-                  <div className="col-6 col-md-6 mb-3">
-                    <div className="sunrise p-3">
-                      <img
-                        src={SunDown}
-                        alt="Sunset"
-                        className="img-fluid mb-2"
-                      />
-                      <h1>{day.sunsetTime}</h1>
-                    </div>
-                  </div>
-                  <div className="col-6 col-md-6 mb-3">
-                    <div className="Moonrise p-3">
-                      <img
-                        src={MoonUp}
-                        alt="Moonrise"
-                        className="img-fluid mb-2"
-                      />
-                      <h1>{day.moonRiseTime}</h1>
-                    </div>
-                  </div>
-                  <div className="col-6 col-md-6 mb-3">
-                    <div className="Moonrise p-3">
-                      <img
-                        src={MoonDown}
-                        alt="Moonset"
-                        className="img-fluid mb-2"
-                      />
-                      <h1>{day.moonsetTime}</h1>
-                    </div>
+                {/* Courses Section */}
+                <div className="courses-list py-3">
+                  <div className="row">
+                    {courses.map((course, index) => (
+                      <div key={index} className="col-md-6 col-12 mb-3">
+                        <div className="course-item">
+                          <div className="course-icon-wrapper">
+                            <span className="course-icon">{getCourseIcon(course.courseName)}</span>
+                          </div>
+                          <div className="course-name-row">
+                            <h5>{course.courseName}</h5>
+                          </div>
+                          <div className="course-description-row">
+                            <p>{course.courseDetails.split(' ').slice(0, 10).join(' ')}...</p>
+                          </div>
+                          <div className="course-button-row">
+                            <button
+                              className="enquiry-btn"
+                              onClick={() => handleEnquiryClick(course.courseName)}
+                            >
+                              Start Now
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
                 <hr className="bighr" />
 
-                {/* Panchang Details Section */}
-                <div className="row py-4 px-4 outsideborder">
-                  <div className="col-md-6 p-2">
-                    <div className="month">
-                      <p>
-                        <h4>
-                          <b>Month</b>
-                        </h4>
-                      </p>
-                      <p>
-                        Amanta: <b>{month.Amanta}</b>
-                      </p>
-                      <p>
-                        Purnimanta: <b>{month.Purnimanta}</b>
-                      </p>
-                      <hr />
-                      <p>
-                        Tithi: <b>{month.Tithi}</b>
-                      </p>
-                      <p>
-                        Till: <b>{month.TithiTill}</b>
-                      </p>
-                      <hr />
-                      <p>
-                        Yog: <b>{month.Yog}</b>
-                      </p>
-                      <p>
-                        Till: <b>{month.YogTill}</b>
-                      </p>
-                      <hr />
-                      <p>
-                        Var: <b>Shanivar</b>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="col-md-6 p-2">
-                    <div className="month">
-                      <p>
-                        <h4>
-                          {" "}
-                          <b>Samvat</b>{" "}
-                        </h4>
-                      </p>
-
-                      <p>
-                        Vikram: <b>{samvat.Vikram}</b>
-                      </p>
-                      <p>
-                        Shaka: <b>{samvat.Shaka}</b>
-                      </p>
-                      <hr />
-                      <p>
-                        Nakshatra: <b>{samvat.Nakshatra}</b>
-                      </p>
-                      <p>
-                        Till: <b>{samvat.NakshatraTill}</b>
-                      </p>
-                      <hr />
-                      <p>
-                        Karan: <b>{samvat.Karan}</b>
-                      </p>
-                      <p>
-                        Till: <b>{samvat.KaranTill}</b>
-                      </p>
-                      <hr />
-                      <p>
-                        Rahu Kalam: <b>12:50 am to 12:13 pm</b>
-                      </p>
-                    </div>
-                  </div>
+                <div className="course-footer-info py-3">
+                  <p className="mb-2">
+                    <small>Learn from expert astrologers with years of experience</small>
+                  </p>
                 </div>
               </div>
             </div>
@@ -546,6 +503,12 @@ const Home = () => {
           </section>
         </div>
       </section>
+
+      <EnquiryModal
+        isOpen={showEnquiryModal}
+        onClose={() => setShowEnquiryModal(false)}
+        selectedCourse={selectedCourse}
+      />
     </>
   );
 };

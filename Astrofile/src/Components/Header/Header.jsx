@@ -5,11 +5,14 @@ import brandlogo from "../../Assets/BrandLogo.png";
 import { IoMenu } from "react-icons/io5";
 import { FaTwitter, FaInstagram, FaFacebookF } from "react-icons/fa";
 import axios from "axios"
+import EnquiryModal from "../EnquiryModal/EnquiryModal";
 
 
 const Header = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("/");
+  const [showEnquiryModal, setShowEnquiryModal] = useState(false)
+  const [selectedCourse, setSelectedCourse] = useState("")
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
@@ -17,6 +20,7 @@ const Header = () => {
   };
 
   const [service, setService] = useState([])
+  const [courses, setCourses] = useState([])
 
   const getApiData = async () => {
     try {
@@ -28,8 +32,21 @@ const Header = () => {
       console.log(error)
     }
   }
+
+  const getCourseData = async () => {
+    try {
+      const res = await axios.get("https://api.vedicjyotishe.com/api/get-course")
+      const data = res.data.data
+      const filteData = data.filter((x) => x.dropDownStatus === "True")
+      setCourses(filteData)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
     getApiData()
+    getCourseData()
   }, [])
   return (
     <>
@@ -96,7 +113,7 @@ const Header = () => {
                   <ul className="dropdown-menu">
                     {
                       service.map((item, index) =>
-                        <li className="dropdown-item">
+                        <li className="dropdown-item" key={index}>
                           <Link onClick={() => handleLinkClick("/Service-Details")} to={`Service-Details/${item.serviceName}`}>{item.serviceName}</Link>
                         </li>
                       )
@@ -104,6 +121,31 @@ const Header = () => {
                     <li className="dropdown-item">
                       <Link onClick={() => handleLinkClick("/OurServices")} to="/OurServices">More Services...</Link>
                     </li>
+                  </ul>
+                </li>
+                <li className="dropdown nav-link">
+                  <Link to="#" className="nav-item-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Courses
+                  </Link>
+                  <ul className="dropdown-menu">
+                    {
+                      courses.map((item, index) =>
+                        <li className="dropdown-item" key={index}>
+                          <a
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setSelectedCourse(item.courseName);
+                              setShowEnquiryModal(true);
+                              setIsNavbarOpen(false);
+                            }}
+                            style={{ cursor: 'pointer' }}
+                          >
+                            {item.courseName}
+                          </a>
+                        </li>
+                      )
+                    }
                   </ul>
                 </li>
                 <li className={`nav-link ${activeLink === "/Blog" ? "active" : ""}`}>
@@ -131,6 +173,12 @@ const Header = () => {
           </div>
         </nav>
       </section >
+
+      <EnquiryModal
+        isOpen={showEnquiryModal}
+        onClose={() => setShowEnquiryModal(false)}
+        selectedCourse={selectedCourse}
+      />
     </>
   );
 };
