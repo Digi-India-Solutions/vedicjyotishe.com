@@ -40,7 +40,7 @@
 
 .Panchangdetail {
   margin-left: 5%;
-  background: white;
+  background: #fbaf7a;
   border-radius: 1rem;
   padding: 1rem;
 }
@@ -122,6 +122,7 @@
 .bighr {
   color: var(--dark-orange);
   border: 1px solid;
+  margin: 0.5rem 0 !important;
 }
 
 .outsideborder {
@@ -294,6 +295,26 @@
   background: white;
 }
 
+.serviceContainer .container {
+  padding: 0 !important;
+}
+
+.services-grid {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: 100%;
+}
+
+.services-grid .row {
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+}
+
+.services-grid .col-md-4 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .hinditext {
   display: flex;
   flex-direction: column;
@@ -319,11 +340,12 @@
 .topbanner {
   background: linear-gradient(90.77deg, #ffffff 0.66%, #ff9933 101.24%);
   display: flex;
-  padding: 2rem 3rem;
+  padding: 1.5rem 2rem;
   align-items: center;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2),
               0 6px 10px rgba(0, 0, 0, 0.15),
               0 9px 15px rgba(0, 0, 0, 0.1);
+  gap: 1rem;
 }
 
 
@@ -392,9 +414,13 @@
   .panchangdate h2 {
     font-size: 1.2rem;
   }
+}
 
-
-
+@media only screen and (max-width: 1024px) {
+  .courses-list .col-md-4 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
 }
 /* Responsive Styles */
 @media only screen and (max-width: 768px) {
@@ -514,6 +540,7 @@
 
 .courses-list {
   display: block;
+  margin-bottom: 0;
 }
 
 .course-item {
@@ -522,7 +549,8 @@
   padding: 1rem;
   border-radius: 5px;
   transition: all 0.3s ease;
-  margin-right: 0.5rem;
+  margin-right: 0.3rem;
+  margin-bottom: 0.3rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -591,6 +619,8 @@
 .course-footer-info {
   text-align: center;
   color: #666;
+  padding: 0.5rem 0 !important;
+  margin: 0 !important;
 }
 
 .course-footer-info p {

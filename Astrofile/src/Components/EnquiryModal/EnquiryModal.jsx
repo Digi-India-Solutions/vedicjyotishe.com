@@ -156,30 +156,32 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
         {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
 
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="name">Name *</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              placeholder="Your Name"
-            />
-          </div>
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="name">Name *</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                placeholder="Your Name"
+              />
+            </div>
 
-          <div className="form-group">
-            <label htmlFor="email">Email *</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              placeholder="Your Email"
-            />
+            <div className="form-group">
+              <label htmlFor="email">Email *</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                placeholder="Your Email"
+              />
+            </div>
           </div>
 
           <div className="form-group">
@@ -247,37 +249,56 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
           </div>
 
           {formData.country === "India" && (
-            <div className="form-group">
-              <label htmlFor="state">State *</label>
-              <select
-                id="state"
-                name="state"
-                value={formData.state}
-                onChange={handleChange}
-                required={formData.country === "India"}
-              >
-                <option value="">Select a State</option>
-                {states.map((state, index) => (
-                  <option key={index} value={state}>
-                    {state}
-                  </option>
-                ))}
-              </select>
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="state">State *</label>
+                <select
+                  id="state"
+                  name="state"
+                  value={formData.state}
+                  onChange={handleChange}
+                  required={formData.country === "India"}
+                >
+                  <option value="">Select a State</option>
+                  {states.map((state, index) => (
+                    <option key={index} value={state}>
+                      {state}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="city">City *</label>
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  value={formData.city}
+                  onChange={handleChange}
+                  required
+                  placeholder="Enter your city"
+                />
+              </div>
             </div>
           )}
 
-          <div className="form-group">
-            <label htmlFor="city">City *</label>
-            <input
-              type="text"
-              id="city"
-              name="city"
-              value={formData.city}
-              onChange={handleChange}
-              required
-              placeholder="Enter your city"
-            />
-          </div>
+          {formData.country !== "India" && (
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="city">City *</label>
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  value={formData.city}
+                  onChange={handleChange}
+                  required
+                  placeholder="Enter your city"
+                />
+              </div>
+            </div>
+          )}
 
           <div className="form-group">
             <label htmlFor="language">Preferred Language *</label>
@@ -310,7 +331,7 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
             className="submit-btn"
             disabled={loading}
           >
-            {loading ? "Starting..." : "Start Now"}
+            {loading ? "Submitting..." : "Enquire Now"}
           </button>
         </form>
       </div>
