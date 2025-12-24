@@ -240,7 +240,7 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
               required
             >
               <option value="">Select a Course</option>
-              {courses.map((course, index) => (
+              {[...courses].reverse().map((course, index) => (
                 <option key={index} value={course.courseName}>
                   {course.courseName}
                 </option>

@@ -185,8 +185,8 @@ const Home = () => {
       const res = await axios.get(
         "https://api.vedicjyotishe.com/api/get-course"
       );
-      const reverseData = res.data.data;
-      setCourses(reverseData.reverse());
+      const courseData = res.data.data;
+      setCourses(courseData);
     } catch (error) {
       console.log(error);
     }
@@ -274,7 +274,7 @@ const Home = () => {
                 {/* Courses Section */}
                 <div className="courses-list py-3">
                   <div className="row">
-                    {courses.map((course, index) => (
+                    {[...courses].reverse().map((course, index) => (
                       <div key={index} className="col-md-4 col-12 mb-3">
                         <div className="course-item">
                           <div className="course-icon-wrapper">
@@ -284,7 +284,7 @@ const Home = () => {
                             <h5>{course.courseName}</h5>
                           </div>
                           <div className="course-description-row">
-                            <p>{course.courseDetails.split(' ').slice(0, 10).join(' ')}...</p>
+                            <p>{course.courseDetails}</p>
                           </div>
                           <div className="course-button-row">
                             <button

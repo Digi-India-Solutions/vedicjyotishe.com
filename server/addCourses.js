@@ -4,9 +4,9 @@ const Course = require("./Models/CourseModel");
 
 const coursesData = [
   {
-    courseName: "VEDIC ASTROLOGY",
-    courseHeading: "Master the Fundamentals of Vedic Astrology",
-    courseDetails: "Learn the complete foundations of Vedic Astrology including planetary positions, house divisions, and natal chart interpretation. This comprehensive course covers all aspects needed to understand astrological concepts.",
+    courseName: "Vedic Astrology",
+    courseHeading: "Basic to Advanced",
+    courseDetails: "This program builds strong conceptual clarity with practical application for accurate and confident readings.",
     coursePrice: 5000,
     courseFinalPrice: 3999,
     courseDiscount: 1001,
@@ -15,20 +15,20 @@ const coursesData = [
     dropDownStatus: "True"
   },
   {
-    courseName: "PRASHNA HORARY",
-    courseHeading: "Predictive Astrology Through Questions",
-    courseDetails: "Prashna Horary is the art of answering specific questions through astrological methods. Learn to interpret horary charts and provide accurate predictions based on the time of questioning.",
-    coursePrice: 4500,
-    courseFinalPrice: 3499,
-    courseDiscount: 1001,
+    courseName: "Numerology",
+    courseHeading: "Basic to Advanced",
+    courseDetails: "The course offer's basics to practical application, understanding the meaning and vibration of numbers in life.",
+    coursePrice: 3800,
+    courseFinalPrice: 2899,
+    courseDiscount: 901,
     courseLogo: "Public/course-logo-2.jpg",
     courseImage: "Public/course-image-2.jpg",
     dropDownStatus: "True"
   },
   {
-    courseName: "NAKSHATRA COURSE",
-    courseHeading: "Understanding the 27 Lunar Mansions",
-    courseDetails: "Deep dive into the Nakshatras (lunar mansions) and their significance in Vedic Astrology. Understand the characteristics, rulerships, and applications of all 27 nakshatras.",
+    courseName: "Nakshatra",
+    courseHeading: "The Advance course",
+    courseDetails: "It focuses on advanced interpretation, predictive use, remedies, and practical chart application.",
     coursePrice: 4000,
     courseFinalPrice: 2999,
     courseDiscount: 1001,
@@ -37,9 +37,9 @@ const coursesData = [
     dropDownStatus: "True"
   },
   {
-    courseName: "ASHTAKAVARGA",
-    courseHeading: "Advanced Strength Analysis System",
-    courseDetails: "Master the Ashtakavarga system for precise calculations of planetary strengths and house strengths. Learn to create and interpret Ashtakavarga charts for accurate predictions.",
+    courseName: "Ashtakavarga",
+    courseHeading: "The Advance Course",
+    courseDetails: "It covers real-life applications for accurate predictions and timing of events.",
     coursePrice: 5500,
     courseFinalPrice: 4299,
     courseDiscount: 1201,
@@ -48,9 +48,9 @@ const coursesData = [
     dropDownStatus: "True"
   },
   {
-    courseName: "MUHURATA - ADVANCE",
-    courseHeading: "Auspicious Timing for All Occasions",
-    courseDetails: "Learn advanced techniques for selecting auspicious times (muhuratas) for important life events. This course covers selection of auspicious moments for business, marriage, travel, and more.",
+    courseName: "Muhurata – Advance Course",
+    courseHeading: "Auspicious Timing",
+    courseDetails: "It includes practical rules, dosha cancellations, and real-life case studies",
     coursePrice: 4800,
     courseFinalPrice: 3799,
     courseDiscount: 1001,
@@ -59,9 +59,9 @@ const coursesData = [
     dropDownStatus: "True"
   },
   {
-    courseName: "TAJIKA VARSHAPHAL",
-    courseHeading: "Annual Horoscopy Predictions",
-    courseDetails: "Understand the Tajika system for creating annual horoscopes. Learn to predict yearly events and trends using Tajika Varshaphal techniques for accurate annual readings.",
+    courseName: "Tajika Varshaphal Course",
+    courseHeading: "Annual Predictions",
+    courseDetails: "It covers Varshesh, Muntha, Sahams, aspects, yogas, and yearly predictions with practical chart-based application.",
     coursePrice: 4200,
     courseFinalPrice: 3199,
     courseDiscount: 1001,
@@ -70,9 +70,9 @@ const coursesData = [
     dropDownStatus: "True"
   },
   {
-    courseName: "MEDICAL ASTROLOGY",
-    courseHeading: "Astrological Health Insights",
-    courseDetails: "Learn how planetary positions relate to health and wellness. This course covers disease identification through astrology and astrological remedies for health issues.",
+    courseName: "Medical Astrology",
+    courseHeading: "Health Through Astrology",
+    courseDetails: "Course offers a structured approach to understanding health and disease through planetary influences.",
     coursePrice: 4300,
     courseFinalPrice: 3299,
     courseDiscount: 1001,
@@ -81,20 +81,20 @@ const coursesData = [
     dropDownStatus: "True"
   },
   {
-    courseName: "NUMEROLOGY",
-    courseHeading: "Divine Meaning of Numbers",
-    courseDetails: "Explore the mystical world of numbers and their meanings. Learn numerology for name analysis, date analysis, and life path calculations based on ancient numerological principles.",
-    coursePrice: 3800,
-    courseFinalPrice: 2899,
-    courseDiscount: 901,
+    courseName: "Prashna (Horary) astrology",
+    courseHeading: "Question Based Predictions",
+    courseDetails: "Learn to answer specific questions using the moment of inquiry.",
+    coursePrice: 4500,
+    courseFinalPrice: 3499,
+    courseDiscount: 1001,
     courseLogo: "Public/course-logo-8.jpg",
     courseImage: "Public/course-image-8.jpg",
     dropDownStatus: "True"
   },
   {
-    courseName: "VASTU BASIC",
-    courseHeading: "Fundamentals of Space Harmony",
-    courseDetails: "Learn the basics of Vastu Shastra for creating harmonious living and working spaces. This foundational course covers Vastu principles and their practical applications.",
+    courseName: "Vastu Shastra",
+    courseHeading: "Space Harmony & Remedies",
+    courseDetails: "Learn to identify basic Vastu defects and apply simple, practical remedies to create harmony, health, and prosperity.",
     coursePrice: 3500,
     courseFinalPrice: 2699,
     courseDiscount: 801,
@@ -103,9 +103,9 @@ const coursesData = [
     dropDownStatus: "True"
   },
   {
-    courseName: "TITHI PRAVESHA CHART",
-    courseHeading: "Timing of Life Events Through Tithis",
-    courseDetails: "Master the art of using Tithi Pravesha charts for precise timing of life events. Learn to calculate and interpret Tithi Pravesha charts for accurate astrological predictions.",
+    courseName: "Tithi Pravesha Analysis",
+    courseHeading: "Lunar Birthday Charts",
+    courseDetails: "This course offers a clear understanding of lunar birthday charts & their role in annual predictions",
     coursePrice: 4600,
     courseFinalPrice: 3599,
     courseDiscount: 1001,

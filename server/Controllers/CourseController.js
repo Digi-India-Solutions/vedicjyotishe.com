@@ -103,10 +103,9 @@ const getCourse = async (req, res) => {
                 message: "Courses not found"
             });
         }
-        const reverseData = courses.reverse()
         res.status(200).json({
             success: true,
-            data: reverseData
+            data: courses
         });
     } catch (error) {
         console.error("Error fetching courses:", error);

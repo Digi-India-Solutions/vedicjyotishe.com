@@ -129,7 +129,7 @@ const Header = () => {
                   </Link>
                   <ul className="dropdown-menu">
                     {
-                      courses.map((item, index) =>
+                      [...courses].reverse().map((item, index) =>
                         <li className="dropdown-item" key={index}>
                           <a
                             href="#"
