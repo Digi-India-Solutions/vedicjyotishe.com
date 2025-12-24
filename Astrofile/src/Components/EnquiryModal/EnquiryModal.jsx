@@ -6,19 +6,32 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    countryCode: "+91",
     mobileNo: "",
     courseName: selectedCourse || "",
     state: "",
     city: "",
+    country: "India",
+    language: "English",
     message: "",
   });
+
   const [courses, setCourses] = useState([]);
+  const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
-  const [cities, setCities] = useState([]);
 
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  // Hardcoded Indian states
+  const indianStates = [
+    "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
+    "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka",
+    "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram",
+    "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu",
+    "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"
+  ];
 
   useEffect(() => {
     if (isOpen) {
@@ -32,58 +45,57 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
   const fetchCourses = async () => {
     try {
       const res = await axios.get("https://api.vedicjyotishe.com/api/get-course");
-      const data = res.data.data;
-      setCourses(data);
+      setCourses(res.data.data || []);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const fetchStates = async () => {
+  const fetchCountries = async () => {
     try {
-      const res = await axios.get("https://api.vedicjyotishe.com/api/get-states");
-      const data = res.data.data;
-      setStates(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+      const res = await fetch("https://restcountries.com/v3.1/all?fields=name,cca2,idd");
+      const data = await res.json();
 
-  const fetchCities = async (state) => {
-    if (!state) {
-      setCities([]);
-      return;
-    }
-    try {
-      const res = await axios.get(`https://api.vedicjyotishe.com/api/get-cities/${state}`);
-      const data = res.data.data;
-      setCities(data);
+      const countryList = data.map((country) => ({
+        name: country.name.common,
+        code: country.cca2,
+        callingCode: country.idd?.root + (country.idd?.suffixes?.[0] || ""),
+      }));
+
+      countryList.sort((a, b) => a.name.localeCompare(b.name));
+      setCountries(countryList);
     } catch (error) {
       console.log(error);
-      setCities([]);
     }
   };
 
   useEffect(() => {
     if (isOpen) {
       fetchCourses();
-      fetchStates();
+      fetchCountries();
+      setStates(indianStates);
     }
   }, [isOpen]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
 
-    if (name === "state") {
-      setFormData((prev) => ({
-        ...prev,
-        city: "",
-      }));
-      fetchCities(value);
+    if (name === "country") {
+      // Find the selected country and get its calling code
+      const selectedCountry = countries.find((c) => c.name === value);
+      const newCountryCode = selectedCountry?.callingCode || "+1";
+
+      setFormData({
+        ...formData,
+        [name]: value,
+        countryCode: newCountryCode,
+        state: "", // Reset state when country changes
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
     }
   };
 
@@ -104,10 +116,13 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
         setFormData({
           name: "",
           email: "",
+          countryCode: "+91",
           mobileNo: "",
           courseName: selectedCourse || "",
           state: "",
           city: "",
+          country: "",
+          language: "English",
           message: "",
         });
 
@@ -168,16 +183,49 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="mobileNo">Mobile Number *</label>
-            <input
-              type="tel"
-              id="mobileNo"
-              name="mobileNo"
-              value={formData.mobileNo}
+            <label htmlFor="country">Country *</label>
+            <select
+              id="country"
+              name="country"
+              value={formData.country}
               onChange={handleChange}
               required
-              placeholder="Your Mobile Number"
-            />
+            >
+              <option value="">Select a Country</option>
+              {countries.map((country) => (
+                <option key={country.code} value={country.name}>
+                  {country.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="mobileNo">Mobile Number *</label>
+            <div style={{ display: "flex", gap: "8px" }}>
+              <input
+                type="text"
+                value={formData.countryCode}
+                readOnly
+                style={{
+                  flex: "0 0 80px",
+                  padding: "8px",
+                  border: "1px solid #ccc",
+                  borderRadius: "4px",
+                  backgroundColor: "#f5f5f5",
+                }}
+              />
+              <input
+                type="tel"
+                id="mobileNo"
+                name="mobileNo"
+                value={formData.mobileNo}
+                onChange={handleChange}
+                required
+                placeholder="Mobile Number"
+                style={{ flex: "1" }}
+              />
+            </div>
           </div>
 
           <div className="form-group">
@@ -198,40 +246,50 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
             </select>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="state">State *</label>
-            <select
-              id="state"
-              name="state"
-              value={formData.state}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select a State</option>
-              {states.map((state, index) => (
-                <option key={index} value={state}>
-                  {state}
-                </option>
-              ))}
-            </select>
-          </div>
+          {formData.country === "India" && (
+            <div className="form-group">
+              <label htmlFor="state">State *</label>
+              <select
+                id="state"
+                name="state"
+                value={formData.state}
+                onChange={handleChange}
+                required={formData.country === "India"}
+              >
+                <option value="">Select a State</option>
+                {states.map((state, index) => (
+                  <option key={index} value={state}>
+                    {state}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
 
           <div className="form-group">
             <label htmlFor="city">City *</label>
-            <select
+            <input
+              type="text"
               id="city"
               name="city"
               value={formData.city}
               onChange={handleChange}
               required
-              disabled={!formData.state}
+              placeholder="Enter your city"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="language">Preferred Language *</label>
+            <select
+              id="language"
+              name="language"
+              value={formData.language}
+              onChange={handleChange}
+              required
             >
-              <option value="">Select a City</option>
-              {cities.map((city, index) => (
-                <option key={index} value={city}>
-                  {city}
-                </option>
-              ))}
+              <option value="English">English</option>
+              <option value="Hindi">Hindi</option>
             </select>
           </div>
 

@@ -21,10 +21,13 @@ const sendEnquiryEmail = async (enquiryData) => {
                 <h2>New Course Enquiry Received</h2>
                 <p><strong>Name:</strong> ${enquiryData.name}</p>
                 <p><strong>Email:</strong> ${enquiryData.email}</p>
+                <p><strong>Country Code:</strong> ${enquiryData.countryCode}</p>
                 <p><strong>Mobile Number:</strong> ${enquiryData.mobileNo}</p>
                 <p><strong>Course Name:</strong> ${enquiryData.courseName}</p>
                 <p><strong>State:</strong> ${enquiryData.state}</p>
                 <p><strong>City:</strong> ${enquiryData.city}</p>
+                <p><strong>Country:</strong> ${enquiryData.country}</p>
+                <p><strong>Language Preference:</strong> ${enquiryData.language}</p>
                 <p><strong>Message:</strong> ${enquiryData.message || "No message provided"}</p>
                 <p><strong>Submission Date:</strong> ${new Date().toLocaleString()}</p>
             `
@@ -39,16 +42,19 @@ const sendEnquiryEmail = async (enquiryData) => {
 
 const createEnquiry = async (req, res) => {
     try {
-        const { name, email, mobileNo, courseName, state, city, message } = req.body;
+        const { name, email, countryCode, mobileNo, courseName, state, city, country, language, message } = req.body;
         const errorMessage = [];
 
         // Validate inputs
         if (!name) errorMessage.push("Name is required");
         if (!email) errorMessage.push("Email is required");
+        if (!countryCode) errorMessage.push("Country Code is required");
         if (!mobileNo) errorMessage.push("Mobile Number is required");
         if (!courseName) errorMessage.push("Course Name is required");
         if (!state) errorMessage.push("State is required");
         if (!city) errorMessage.push("City is required");
+        if (!country) errorMessage.push("Country is required");
+        if (!language || !["Hindi", "English"].includes(language)) errorMessage.push("Language (Hindi or English) is required");
 
         if (errorMessage.length > 0) {
             return res.status(400).json({
@@ -61,10 +67,13 @@ const createEnquiry = async (req, res) => {
         const newEnquiry = new Enquiry({
             name,
             email,
+            countryCode,
             mobileNo,
             courseName,
             state,
             city,
+            country,
+            language,
             message: message || "",
             status: "Pending"
         });

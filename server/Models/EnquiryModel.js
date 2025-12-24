@@ -9,6 +9,10 @@ const enquirySchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    countryCode: {
+        type: String,
+        required: true
+    },
     mobileNo: {
         type: String,
         required: true
@@ -23,6 +27,15 @@ const enquirySchema = new mongoose.Schema({
     },
     city: {
         type: String,
+        required: true
+    },
+    country: {
+        type: String,
+        required: true
+    },
+    language: {
+        type: String,
+        enum: ["Hindi", "English"],
         required: true
     },
     message: {
