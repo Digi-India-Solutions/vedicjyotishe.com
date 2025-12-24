@@ -30,6 +30,7 @@ import EditTagline from '../../Pages/TagLine/EditTagline'
 import AllServiceInquery from '../../Pages/ServiceInquery/AllServiceInquery'
 import Newsletter from '../../Pages/Newsletter/Newsletter'
 import GetInTouch from '../../Pages/GetInTouch/GetInTouch'
+import AllEnquiries from '../../Pages/Enquiries/AllEnquiries'
 
 const Home = () => {
   const isLoggedIn = sessionStorage.getItem("login");
@@ -88,9 +89,12 @@ const Home = () => {
                 <Route path={"/edit-tagline/:id"} element={<EditTagline />} />
 
 
-                {/* --- Serice --- */}
+                {/* --- Service --- */}
                 <Route path={"/all-service-query"} element={<AllServiceInquery />} />
                 <Route path={"/edit-order/:id"} element={<EditOrder />} />
+
+                {/* --- Course Enquiries --- */}
+                <Route path={"/all-enquiries"} element={<AllEnquiries />} />
 
               </Routes>
             </div>

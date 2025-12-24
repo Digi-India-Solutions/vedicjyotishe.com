@@ -80,6 +80,11 @@ const Header = () => {
               </Link>
             </li>
             <li>
+              <Link to="/all-enquiries" onClick={handletoggleBtn}>
+                <i className="fa-solid fa-file-contract"></i> Manage Course Enquiries
+              </Link>
+            </li>
+            <li>
               <Link to="/all-tagline" onClick={handletoggleBtn}>
                 <i className="fa-brands fa-cc-discover"></i> Manage TagLine
               </Link>
