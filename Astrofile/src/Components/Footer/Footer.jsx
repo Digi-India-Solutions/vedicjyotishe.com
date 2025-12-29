@@ -106,8 +106,8 @@ const Footer = () => {
                     </div>
                     <div className="callnumber">
                       <p>Phone</p>
-                      <a href="tel:+916366052167" target="_blank">
-                        <h5>+91 6366052167</h5>
+                      <a href="tel:+919193078392" target="_blank">
+                        <h5>+91 9193078392</h5>
                       </a>
                     </div>
                   </div>

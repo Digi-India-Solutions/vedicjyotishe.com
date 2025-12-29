@@ -155,7 +155,7 @@ const Contact = () => {
               <div className="col-md-3 info-box">
                 <FaPhoneAlt className="icon" />
                 <p>
-                  <a href="tel:+916366052167">+91 6366052167</a>
+                  <a href="tel:+919193078392">+91 9193078392</a>
                 </p>
               </div>
             </div>

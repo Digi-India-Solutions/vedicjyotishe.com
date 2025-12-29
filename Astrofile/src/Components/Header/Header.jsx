@@ -57,8 +57,8 @@ const Header = () => {
               <div className="talk">
                 <h5>
                   Talk to Astrologers:{" "}
-                  <a href="tel:+916366052167" target="_blank" rel="noopener noreferrer">
-                    +91 6366052167
+                  <a href="tel:+919193078392" target="_blank" rel="noopener noreferrer">
+                    +91 9193078392
                   </a>
                 </h5>
               </div>
@@ -129,7 +129,7 @@ const Header = () => {
                   </Link>
                   <ul className="dropdown-menu">
                     {
-                      [...courses].reverse().map((item, index) =>
+                      [...courses].map((item, index) =>
                         <li className="dropdown-item" key={index}>
                           <a
                             href="#"
@@ -160,7 +160,7 @@ const Header = () => {
                 <li className="chat-now-button">
                   {/* <div className="btnposition"> */}
                   <a
-                    href="https://wa.me/916366052167"
+                    href="https://wa.me/919193078392"
                     target="_blank"
                     className="text-light"
                   >

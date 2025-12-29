@@ -5,6 +5,8 @@ import Swal from 'sweetalert2';
 const AllEnquiries = () => {
     const [enquiries, setEnquiries] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [selectedEnquiry, setSelectedEnquiry] = useState(null);
+    const [showModal, setShowModal] = useState(false);
 
     // Fetch data from the API
     useEffect(() => {
@@ -109,6 +111,12 @@ const AllEnquiries = () => {
         }
     };
 
+    // View enquiry details
+    const viewDetails = (enquiry) => {
+        setSelectedEnquiry(enquiry);
+        setShowModal(true);
+    };
+
     if (loading) {
         return <div className="text-center p-4">Loading...</div>;
     }
@@ -134,8 +142,9 @@ const AllEnquiries = () => {
                                 <th scope="col">Email</th>
                                 <th scope="col">Mobile No.</th>
                                 <th scope="col">Course</th>
-                                <th scope="col">State</th>
-                                <th scope="col">City</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Working</th>
+                                <th scope="col">Studied Astrology</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
@@ -148,10 +157,11 @@ const AllEnquiries = () => {
                                         <th scope="row">{index + 1}</th>
                                         <td>{enquiry.name}</td>
                                         <td>{enquiry.email}</td>
-                                        <td>{enquiry.mobileNo}</td>
+                                        <td>{enquiry.countryCode} {enquiry.mobileNo}</td>
                                         <td>{enquiry.courseName}</td>
-                                        <td>{enquiry.state}</td>
-                                        <td>{enquiry.city}</td>
+                                        <td>{enquiry.city}, {enquiry.state || ''} {enquiry.country}</td>
+                                        <td>{enquiry.workingProfessional || '-'}</td>
+                                        <td>{enquiry.studiedAstrology || '-'}</td>
                                         <td>{formatDate(enquiry.createdAt)}</td>
                                         <td>
                                             <span className={`badge bg-${getStatusColor(enquiry.status)}`}>
@@ -159,6 +169,13 @@ const AllEnquiries = () => {
                                             </span>
                                         </td>
                                         <td>
+                                            <button
+                                                className="btn btn-sm btn-info mb-1"
+                                                onClick={() => viewDetails(enquiry)}
+                                                style={{ marginRight: '5px' }}
+                                            >
+                                                View
+                                            </button>
                                             <select
                                                 className="form-select form-select-sm"
                                                 value={enquiry.status}
@@ -181,13 +198,82 @@ const AllEnquiries = () => {
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan="10" className="text-center">No enquiries found</td>
+                                    <td colSpan="11" className="text-center">No enquiries found</td>
                                 </tr>
                             )}
                         </tbody>
                     </table>
                 </div>
             </section>
+
+            {/* Enquiry Details Modal */}
+            {showModal && selectedEnquiry && (
+                <div className="modal show d-block" tabIndex="-1" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
+                    <div className="modal-dialog modal-lg">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">Enquiry Details - {selectedEnquiry.name}</h5>
+                                <button type="button" className="btn-close" onClick={() => setShowModal(false)}></button>
+                            </div>
+                            <div className="modal-body">
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <h6 className="text-primary border-bottom pb-2">Personal Details</h6>
+                                        <p><strong>Name:</strong> {selectedEnquiry.name}</p>
+                                        <p><strong>Email:</strong> {selectedEnquiry.email}</p>
+                                        <p><strong>Mobile:</strong> {selectedEnquiry.countryCode} {selectedEnquiry.mobileNo}</p>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <h6 className="text-primary border-bottom pb-2">Address</h6>
+                                        <p><strong>Country:</strong> {selectedEnquiry.country}</p>
+                                        <p><strong>State:</strong> {selectedEnquiry.state || 'N/A'}</p>
+                                        <p><strong>City:</strong> {selectedEnquiry.city}</p>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <h6 className="text-primary border-bottom pb-2">Professional Background</h6>
+                                        <p><strong>Working Professional:</strong> {selectedEnquiry.workingProfessional || 'N/A'}</p>
+                                        <p><strong>Current Role:</strong> {selectedEnquiry.currentRole || 'N/A'}</p>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <h6 className="text-primary border-bottom pb-2">Astrology Background</h6>
+                                        <p><strong>Studied Earlier:</strong> {selectedEnquiry.studiedAstrology || 'N/A'}</p>
+                                        <p><strong>Current Level:</strong> {selectedEnquiry.astrologyLevel || 'N/A'}</p>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <h6 className="text-primary border-bottom pb-2">Course Interest</h6>
+                                        <p><strong>Course:</strong> {selectedEnquiry.courseName}</p>
+                                        <p><strong>Purpose:</strong> {selectedEnquiry.learningPurpose || 'N/A'} {selectedEnquiry.learningPurpose === 'Other' ? `- ${selectedEnquiry.otherPurpose}` : ''}</p>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <h6 className="text-primary border-bottom pb-2">Learning Preferences</h6>
+                                        <p><strong>Time per Week:</strong> {selectedEnquiry.timePerWeek || 'N/A'}</p>
+                                        <p><strong>Preferred Days:</strong> {selectedEnquiry.preferredDays || 'N/A'}</p>
+                                        <p><strong>Language:</strong> {selectedEnquiry.language}</p>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div className="row">
+                                    <div className="col-12">
+                                        <h6 className="text-primary border-bottom pb-2">Additional Information</h6>
+                                        <p><strong>Message:</strong> {selectedEnquiry.message || 'No message provided'}</p>
+                                        <p><strong>Status:</strong> <span className={`badge bg-${getStatusColor(selectedEnquiry.status)}`}>{selectedEnquiry.status}</span></p>
+                                        <p><strong>Submitted:</strong> {formatDate(selectedEnquiry.createdAt)}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" onClick={() => setShowModal(false)}>Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </>
     );
 };

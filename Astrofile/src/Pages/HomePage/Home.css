@@ -11,7 +11,7 @@
 }
 
 .marquee-container {
-  width: 300px;
+  width: 100%;
   letter-spacing: 1px;
   overflow: hidden;
   white-space: nowrap;
@@ -132,12 +132,31 @@
 
 /* Article News */
 
+.news {
+  display: flex;
+  flex-direction: column;
+  height: 380px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.news:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
 .card-img-top {
-  
-  width: 100%; 
-  height: 200px; 
-  object-fit: cover; 
-  border-radius: 0.5rem;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.news .card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 1rem;
 }
 
 .content-title-news {
@@ -152,29 +171,51 @@
 
 .card-title {
   font-family: "Georgia", serif;
-  font-size: 18px;
+  font-size: 13px;
   font-weight: 600;
+  margin: 0 0 0.5rem 0;
 }
 
 .card-body .card-text {
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   color: #000;
-  letter-spacing: 1px;
-  
+  letter-spacing: 0.5px;
+  margin: 0 0 0.5rem 0;
 }
 
 .card-body .card-description {
   color: #7c7c7c;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 600;
-  max-height: 80px;
-  padding: 0.5rem 0;
+  flex-grow: 1;
+  padding: 0;
+  margin: 0 0 1rem 0;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Limits text to 3 lines */
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.news .servicedetails {
+  margin-top: auto;
+  width: 100%;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, var(--dark-orange), #ff8c00);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.news .servicedetails:hover {
+  box-shadow: 0 2px 8px rgba(245, 166, 35, 0.4);
+  transform: translateY(-1px);
 }
 
 
@@ -315,6 +356,72 @@
   padding-right: 0.5rem;
 }
 
+.services-grid .col-md-4 .text-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.services-grid .col-md-4 .text-center:hover {
+  box-shadow: 0 2px 8px rgba(245, 166, 35, 0.15);
+  transform: translateY(-2px);
+}
+
+.services-grid .col-md-4 .text-center img {
+  max-width: 80px;
+  margin: 0 auto 0.5rem;
+}
+
+.services-grid .col-md-4 .service-name h5 {
+  font-weight: 600;
+  margin: 0.5rem 0;
+  color: var(--text-color);
+  font-size: 13px;
+}
+
+.services-grid .col-md-4 p {
+  margin: 0.5rem 0;
+  font-size: 12px;
+}
+
+.services-grid .col-md-4 .servicedetails {
+  width: 100%;
+  padding: 8px;
+  background: linear-gradient(135deg, var(--dark-orange), #ff8c00);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: auto;
+  transition: all 0.3s;
+}
+
+.services-grid .col-md-4 .servicedetails:hover {
+  box-shadow: 0 2px 8px rgba(245, 166, 35, 0.4);
+}
+
+/* Responsive Services */
+@media (max-width: 1024px) {
+  .services-grid .col-md-4 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid .col-md-4 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 0.5rem !important;
+  }
+}
+
 .hinditext {
   display: flex;
   flex-direction: column;
@@ -352,7 +459,7 @@
 .ViewServicebtn {
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 0.5rem;
 }
 
 .ViewServicebtn .ViewAllbtn {
@@ -360,10 +467,10 @@
   color: black;
   letter-spacing: 1px;
   font-weight: 600;
-  padding: 0.75rem 3rem;
+  padding: 0.5rem 2rem;
   border: none;
   border-radius: 1rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-family: Playfair Display;
 }
 
@@ -426,7 +533,15 @@
 @media only screen and (max-width: 768px) {
 
   .reverceColumn{
-    flex-direction: column-reverse;
+    flex-direction: column;
+  }
+
+  .courses-mobile-first {
+    order: 2;
+  }
+  
+  .courses-mobile-second {
+    order: 1;
   }
   
   .marquee-container {
@@ -554,6 +669,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  height: 300px;
+  min-height: 300px;
 }
 
 .course-item:hover {
@@ -564,12 +681,22 @@
 .course-icon-wrapper {
   text-align: center;
   padding: 0.5rem 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .course-icon {
   color: var(--dark-orange);
   font-size: 28px;
   display: inline-block;
+}
+
+.course-icon-img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
 }
 
 .course-name-row h5 {
@@ -582,6 +709,9 @@
 
 .course-description-row {
   flex-grow: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .course-description-row p {
@@ -590,11 +720,17 @@
   margin: 0;
   padding: 0;
   line-height: 1.4;
-  text-align: center;
+  text-align: left;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .course-button-row {
   margin-top: auto;
+  padding-top: 0.5rem;
 }
 
 .enquiry-btn {
@@ -608,7 +744,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
-  margin-top: 0.5rem;
+  margin-top: 0;
 }
 
 .enquiry-btn:hover {
@@ -626,5 +762,29 @@
 .course-footer-info p {
   margin: 0;
   font-size: 12px;
+}
+
+/* Mobile layout - courses on top, services on bottom */
+@media only screen and (max-width: 768px) {
+  .courses-section {
+    order: 1;
+  }
+  
+  .services-section {
+    order: 2;
+  }
+
+  .courses-list .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* Tablet layout */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .courses-list .col-md-4 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
 }
 

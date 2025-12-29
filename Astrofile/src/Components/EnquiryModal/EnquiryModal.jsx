@@ -9,10 +9,18 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
     countryCode: "+91",
     mobileNo: "",
     courseName: selectedCourse || "",
+    country: "India",
     state: "",
     city: "",
-    country: "India",
     language: "English",
+    workingProfessional: "",
+    currentRole: "",
+    studiedAstrology: "",
+    astrologyLevel: "",
+    learningPurpose: "",
+    otherPurpose: "",
+    timePerWeek: "",
+    preferredDays: "",
     message: "",
   });
 
@@ -119,10 +127,18 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
           countryCode: "+91",
           mobileNo: "",
           courseName: selectedCourse || "",
+          country: "India",
           state: "",
           city: "",
-          country: "",
           language: "English",
+          workingProfessional: "",
+          currentRole: "",
+          studiedAstrology: "",
+          astrologyLevel: "",
+          learningPurpose: "",
+          otherPurpose: "",
+          timePerWeek: "",
+          preferredDays: "",
           message: "",
         });
 
@@ -156,9 +172,10 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
         {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
 
         <form onSubmit={handleSubmit}>
+          {/* Details Section */}
+          <div className="form-section-label">Details</div>
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="name">Name *</label>
               <input
                 type="text"
                 id="name"
@@ -166,12 +183,11 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                placeholder="Your Name"
+                placeholder="Full Name *"
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="email">Email *</label>
               <input
                 type="email"
                 id="email"
@@ -179,42 +195,25 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                placeholder="Your Email"
+                placeholder="Email Address *"
               />
             </div>
           </div>
 
           <div className="form-group">
-            <label htmlFor="country">Country *</label>
-            <select
-              id="country"
-              name="country"
-              value={formData.country}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select a Country</option>
-              {countries.map((country) => (
-                <option key={country.code} value={country.name}>
-                  {country.name}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="mobileNo">Mobile Number *</label>
+            <label>Mobile Number *</label>
             <div style={{ display: "flex", gap: "8px" }}>
               <input
                 type="text"
                 value={formData.countryCode}
                 readOnly
                 style={{
-                  flex: "0 0 80px",
+                  flex: "0 0 60px",
                   padding: "8px",
-                  border: "1px solid #ccc",
+                  border: "1px solid #ddd",
                   borderRadius: "4px",
-                  backgroundColor: "#f5f5f5",
+                  backgroundColor: "#f9f9f9",
+                  fontSize: "13px",
                 }}
               />
               <input
@@ -224,14 +223,88 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
                 value={formData.mobileNo}
                 onChange={handleChange}
                 required
-                placeholder="Mobile Number"
+                placeholder="Mobile Number *"
                 style={{ flex: "1" }}
               />
             </div>
           </div>
 
+          {/* Working Professional */}
           <div className="form-group">
-            <label htmlFor="courseName">Course Name *</label>
+            <label>Are you currently a working professional?</label>
+            <div className="checkbox-group">
+              {["Yes", "No", "Self-employed", "Student", "Homemaker"].map((option) => (
+                <label key={option} className="checkbox-label">
+                  <input
+                    type="radio"
+                    name="workingProfessional"
+                    value={option}
+                    checked={formData.workingProfessional === option}
+                    onChange={handleChange}
+                  />
+                  {option}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Current Role (Optional) */}
+          {["Yes", "Self-employed"].includes(formData.workingProfessional) && (
+            <div className="form-group">
+              <input
+                type="text"
+                id="currentRole"
+                name="currentRole"
+                value={formData.currentRole}
+                onChange={handleChange}
+                placeholder="Your current role / profession (optional)"
+              />
+            </div>
+          )}
+
+          {/* Studied Astrology */}
+          <div className="form-group">
+            <label>Have you studied astrology earlier?</label>
+            <div className="checkbox-group">
+              {["Yes", "No"].map((option) => (
+                <label key={option} className="checkbox-label">
+                  <input
+                    type="radio"
+                    name="studiedAstrology"
+                    value={option}
+                    checked={formData.studiedAstrology === option}
+                    onChange={handleChange}
+                  />
+                  {option}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Astrology Level */}
+          {formData.studiedAstrology === "Yes" && (
+            <div className="form-group">
+              <label>Your current level of astrology knowledge:</label>
+              <div className="checkbox-group">
+                {["Beginner", "Intermediate", "Advanced"].map((option) => (
+                  <label key={option} className="checkbox-label">
+                    <input
+                      type="radio"
+                      name="astrologyLevel"
+                      value={option}
+                      checked={formData.astrologyLevel === option}
+                      onChange={handleChange}
+                    />
+                    {option}
+                  </label>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Course Selection */}
+          <div className="form-group">
+            <label>Interested Course *</label>
             <select
               id="courseName"
               name="courseName"
@@ -239,7 +312,7 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
               onChange={handleChange}
               required
             >
-              <option value="">Select a Course</option>
+              <option value="">Select Interested Course</option>
               {[...courses].reverse().map((course, index) => (
                 <option key={index} value={course.courseName}>
                   {course.courseName}
@@ -248,10 +321,105 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
             </select>
           </div>
 
+          {/* Learning Purpose */}
+          <div className="form-group">
+            <label>Purpose of learning astrology:</label>
+            <div className="checkbox-group">
+              {["Personal interest", "Professional practice", "Research / advanced study", "Teaching"].map((option) => (
+                <label key={option} className="checkbox-label">
+                  <input
+                    type="radio"
+                    name="learningPurpose"
+                    value={option}
+                    checked={formData.learningPurpose === option}
+                    onChange={handleChange}
+                  />
+                  {option}
+                </label>
+              ))}
+              <label className="checkbox-label">
+                <input
+                  type="radio"
+                  name="learningPurpose"
+                  value="Other"
+                  checked={formData.learningPurpose === "Other"}
+                  onChange={handleChange}
+                />
+                Other:
+                {formData.learningPurpose === "Other" && (
+                  <input
+                    type="text"
+                    name="otherPurpose"
+                    value={formData.otherPurpose}
+                    onChange={handleChange}
+                    placeholder="Please specify"
+                    style={{ marginLeft: "8px", flex: "1" }}
+                  />
+                )}
+              </label>
+            </div>
+          </div>
+
+          {/* Time Dedication */}
+          <div className="form-group">
+            <label>Time you can dedicate weekly for study:</label>
+            <div className="checkbox-group">
+              {["2–4 hrs", "4–6 hrs", "6+ hrs"].map((option) => (
+                <label key={option} className="checkbox-label">
+                  <input
+                    type="radio"
+                    name="timePerWeek"
+                    value={option}
+                    checked={formData.timePerWeek === option}
+                    onChange={handleChange}
+                  />
+                  {option}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Preferred Days */}
+          <div className="form-group">
+            <label>Preferred days of learning:</label>
+            <div className="checkbox-group">
+              {["Weekdays", "Weekends"].map((option) => (
+                <label key={option} className="checkbox-label">
+                  <input
+                    type="radio"
+                    name="preferredDays"
+                    value={option}
+                    checked={formData.preferredDays === option}
+                    onChange={handleChange}
+                  />
+                  {option}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Address Section */}
+          <div className="form-section-label">Address</div>
+          <div className="form-group">
+            <select
+              id="country"
+              name="country"
+              value={formData.country}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Country *</option>
+              {countries.map((country) => (
+                <option key={country.code} value={country.name}>
+                  {country.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
           {formData.country === "India" && (
             <div className="form-row">
               <div className="form-group">
-                <label htmlFor="state">State *</label>
                 <select
                   id="state"
                   name="state"
@@ -259,7 +427,7 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
                   onChange={handleChange}
                   required={formData.country === "India"}
                 >
-                  <option value="">Select a State</option>
+                  <option value="">Select State *</option>
                   {states.map((state, index) => (
                     <option key={index} value={state}>
                       {state}
@@ -269,7 +437,6 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="city">City *</label>
                 <input
                   type="text"
                   id="city"
@@ -277,31 +444,28 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
                   value={formData.city}
                   onChange={handleChange}
                   required
-                  placeholder="Enter your city"
+                  placeholder="City *"
                 />
               </div>
             </div>
           )}
 
-          {formData.country !== "India" && (
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="city">City *</label>
-                <input
-                  type="text"
-                  id="city"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleChange}
-                  required
-                  placeholder="Enter your city"
-                />
-              </div>
+          {formData.country !== "India" && formData.country && (
+            <div className="form-group">
+              <input
+                type="text"
+                id="city"
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+                required
+                placeholder="City *"
+              />
             </div>
           )}
 
+          {/* Language */}
           <div className="form-group">
-            <label htmlFor="language">Preferred Language *</label>
             <select
               id="language"
               name="language"
@@ -314,15 +478,15 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
             </select>
           </div>
 
+          {/* Message */}
           <div className="form-group">
-            <label htmlFor="message">Message</label>
             <textarea
               id="message"
               name="message"
               value={formData.message}
               onChange={handleChange}
               placeholder="Any additional message or questions"
-              rows="4"
+              rows="3"
             ></textarea>
           </div>
 

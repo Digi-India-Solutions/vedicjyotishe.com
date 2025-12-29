@@ -23,7 +23,7 @@ const enquirySchema = new mongoose.Schema({
     },
     state: {
         type: String,
-        required: true
+        default: ""
     },
     city: {
         type: String,
@@ -37,6 +37,44 @@ const enquirySchema = new mongoose.Schema({
         type: String,
         enum: ["Hindi", "English"],
         required: true
+    },
+    workingProfessional: {
+        type: String,
+        enum: ["Yes", "No", "Self-employed", "Student", "Homemaker", ""],
+        default: ""
+    },
+    currentRole: {
+        type: String,
+        default: ""
+    },
+    studiedAstrology: {
+        type: String,
+        enum: ["Yes", "No", ""],
+        default: ""
+    },
+    astrologyLevel: {
+        type: String,
+        enum: ["Beginner", "Intermediate", "Advanced", ""],
+        default: ""
+    },
+    learningPurpose: {
+        type: String,
+        enum: ["Personal interest", "Professional practice", "Research / advanced study", "Teaching", "Other", ""],
+        default: ""
+    },
+    otherPurpose: {
+        type: String,
+        default: ""
+    },
+    timePerWeek: {
+        type: String,
+        enum: ["2–4 hrs", "4–6 hrs", "6+ hrs", ""],
+        default: ""
+    },
+    preferredDays: {
+        type: String,
+        enum: ["Weekdays", "Weekends", ""],
+        default: ""
     },
     message: {
         type: String,

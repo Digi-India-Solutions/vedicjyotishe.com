@@ -6,7 +6,7 @@ import MoonUp from "../../Assets/MoonUp.png";
 import MoonDown from "../../Assets/MoonDown.png";
 import pray from "../../Assets/pray.png";
 import Servicetop from "../../Assets/Bithchart.jpg";
-import Websitebanner from "../../Assets/Websitebanner.jpg";
+import Websitebanner from "../../Assets/new_banner.png";
 import { Link } from "react-router-dom";
 import { IoMdArrowForward } from "react-icons/io";
 import { FaStar, FaChartPie, FaHome, FaHeartbeat, FaMoon, FaDice, FaGem, FaQuestion, FaCalendar, FaVial } from "react-icons/fa";
@@ -202,19 +202,20 @@ const Home = () => {
   };
 
   const getCourseIcon = (courseName) => {
+    // Map course names to icon file names
     const iconMap = {
-      "Vedic Astrology": <FaStar />,
-      "Prashna Horary": <FaQuestion />,
-      "Nakshatra Course": <FaMoon />,
-      "Ashtakavarga": <FaChartPie />,
-      "Muhurata-Advance": <FaCalendar />,
-      "Tajika Varshaphal": <FaDice />,
-      "Medical Astrology": <FaHeartbeat />,
-      "Numerology": <FaGem />,
-      "Vastu Basic": <FaHome />,
-      "Tithi Pravesha Chart": <FaVial />
+      "Vedic Astrology": "icon1.png",
+      "Prashna Horary": "icon2.png",
+      "Nakshatra Course": "icon3.png",
+      "Ashtakavarga": "icon4.png",
+      "Muhurata-Advance": "icon5.png",
+      "Tajika Varshaphal": "icon6.png",
+      "Medical Astrology": "icon7.png",
+      "Numerology": "icon8.png",
+      "Vastu Basic": "icon9.png",
+      "Tithi Pravesha Chart": "icon1.png"
     };
-    return iconMap[courseName] || <FaStar />;
+    return iconMap[courseName] || "icon1.png";
   };
 
   return (
@@ -239,7 +240,7 @@ const Home = () => {
                 scrollamount="5"
                 loop="infinite"
               >
-                {tagline.tagLine}
+                Learn Astrology — Decode Destiny, Discover Direction ! Check courses list and Enquire NOW . New Batches starting soon!
               </marquee>
             </div>
           </div>
@@ -249,7 +250,7 @@ const Home = () => {
       <section className="mainbg pt-4">
         <div className="container-fluid pt-4">
           <div className="row reverceColumn">
-            <div className="col-md-5 pb-2">
+            <div className="col-md-5 pb-2 courses-section">
               <div className="content_title text-center">
                 <h2>Learn Astrology</h2>
               </div>
@@ -274,11 +275,19 @@ const Home = () => {
                 {/* Courses Section */}
                 <div className="courses-list py-3">
                   <div className="row">
-                    {[...courses].reverse().map((course, index) => (
+                    {[...courses].map((course, index) => {
+                      const iconExtensions = ['jpg', 'jpg', 'webp', 'jpg', 'jpg', 'jpg', 'jpg', 'webp', 'jpg'];
+                      const iconIndex = index % 9;
+                      const iconExt = iconExtensions[iconIndex];
+                      return (
                       <div key={index} className="col-md-4 col-12 mb-3">
                         <div className="course-item">
                           <div className="course-icon-wrapper">
-                            <span className="course-icon">{getCourseIcon(course.courseName)}</span>
+                            <img 
+                              src={`/icon${iconIndex + 1}.${iconExt}`} 
+                              alt={course.courseName}
+                              className="course-icon-img"
+                            />
                           </div>
                           <div className="course-name-row">
                             <h5>{course.courseName}</h5>
@@ -296,14 +305,15 @@ const Home = () => {
                           </div>
                         </div>
                       </div>
-                    ))}
+                    );
+                    })}
                   </div>
                 </div>
 
               </div>
             </div>
 
-            <div className="col-md-7">
+            <div className="col-md-7 services-section">
               <div className="service_title">
                 <h2>Our Services</h2>
               </div>
@@ -341,7 +351,7 @@ const Home = () => {
                     </div>
                     <div className="services-grid pt-5">
                       <div className="row">
-                        {services.slice(0, 9).map((service, index) => (
+                        {services.slice(0, 12).map((service, index) => (
                           <div key={index} className="col-md-4 col-12 mt-3 mb-4">
                             <div className="text-center">
                               <img
@@ -395,14 +405,19 @@ const Home = () => {
                   <h2>News & Articles</h2>
                 </div>
                 <div className="row p-0 m-0">
-                  {blog.map((item, index) => (
-                    <div className="col-md-3 col-6 mb-4">
+                  {blog.map((item, index) => {
+                    const newsIcons = ['icon1', 'icon2', 'icon3', 'icon4'];
+                    const iconIndex = index % 4;
+                    const iconExt = ['jpg', 'jpg', 'webp', 'jpg'][iconIndex];
+                    return (
+                    <div className="col-md-3 col-6 mb-4" key={index}>
                       <div className="news">
                         <h5 className="card-title py-2">What's the news?</h5>
                         <img
-                          src={`https://api.vedicjyotishe.com/${item.blogImage}`}
+                          src={`/${newsIcons[iconIndex]}.${iconExt}`}
                           className="card-img-top"
-                          alt="news"
+                          alt="news icon"
+                          style={{ height: "150px", objectFit: "cover" }}
                         />
                         <div className="card-body">
                           <p className="card-text">{item.blogHeading}</p>
@@ -422,7 +437,8 @@ const Home = () => {
                         </div>
                       </div>
                     </div>
-                  ))}
+                  );
+                  })}
 
                   <div className="detail-blog">
                     <Link
