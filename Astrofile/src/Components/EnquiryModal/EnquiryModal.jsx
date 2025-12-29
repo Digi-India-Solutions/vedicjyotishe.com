@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./EnquiryModal.css";
 import axios from "axios";
+import { Toaster, toast } from "sonner";
 
 const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
   const [formData, setFormData] = useState({
@@ -120,6 +121,7 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
       );
 
       if (response.data.success) {
+        toast.success("Your enquiry has been submitted successfully! We will get back to you soon.");
         setSuccessMessage("Enquiry submitted successfully!");
         setFormData({
           name: "",
@@ -159,8 +161,10 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="enquiry-modal-overlay" onClick={onClose}>
-      <div className="enquiry-modal" onClick={(e) => e.stopPropagation()}>
+    <>
+      <Toaster />
+      <div className="enquiry-modal-overlay" onClick={onClose}>
+        <div className="enquiry-modal" onClick={(e) => e.stopPropagation()}>
         <button className="close-btn" onClick={onClose}>
           &times;
         </button>
@@ -202,19 +206,12 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
 
           <div className="form-group">
             <label>Mobile Number *</label>
-            <div style={{ display: "flex", gap: "8px" }}>
+            <div className="mobile-number-wrapper">
               <input
                 type="text"
                 value={formData.countryCode}
                 readOnly
-                style={{
-                  flex: "0 0 60px",
-                  padding: "8px",
-                  border: "1px solid #ddd",
-                  borderRadius: "4px",
-                  backgroundColor: "#f9f9f9",
-                  fontSize: "13px",
-                }}
+                className="country-code-input"
               />
               <input
                 type="tel"
@@ -224,7 +221,7 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
                 onChange={handleChange}
                 required
                 placeholder="Mobile Number *"
-                style={{ flex: "1" }}
+                className="mobile-number-input"
               />
             </div>
           </div>
@@ -500,6 +497,7 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

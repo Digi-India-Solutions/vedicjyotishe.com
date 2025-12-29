@@ -1,13 +1,51 @@
 /* General Styles */
 .Bgimage {
   width: 100%;
-  height: 100%;
+  height: 800px;
   padding: 0 !important;
 }
 
 .Bgimage img {
   width: 100%;
   height: 100%;
+    object-fit: cover;
+}
+
+/* Responsive Banner Height */
+@media (max-width: 1920px) {
+  .Bgimage {
+    height: 800px;
+  }
+}
+
+@media (max-width: 1500px) {
+  .Bgimage {
+    height: 600px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .Bgimage {
+    height: 500px;
+  }
+}
+
+@media (max-width: 992px) {
+  .Bgimage {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .Bgimage {
+    height: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  .Bgimage {
+    height: 200px;
+  }
 }
 
 .marquee-container {
@@ -480,11 +518,11 @@
 }
 
 .bannerimg img {
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
   position: relative;
-  border-radius: 50px;
-  animation: rotate360 7s linear infinite; 
+  border-radius: 25px;
+  animation: rotate360 7s linear infinite;
 }
 
 @keyframes rotate360 {
