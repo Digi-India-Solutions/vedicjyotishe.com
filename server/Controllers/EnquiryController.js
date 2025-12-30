@@ -54,7 +54,7 @@ const sendEnquiryEmail = async (enquiryData) => {
         };
 
         await transporter.sendMail(mailOptions);
-        console.log("Email sent successfully to easydevs1@gmail.com");
+        console.log("Email sent successfully ");
     } catch (error) {
         console.error("Error sending email:", error);
     }
