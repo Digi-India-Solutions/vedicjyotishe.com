@@ -15,7 +15,7 @@ const sendEnquiryEmail = async (enquiryData) => {
     try {
         const mailOptions = {
             from: process.env.SEND_MAIL_ID,
-            to: "easydevs1@gmail.com",
+            to: "divya.parihar25@gmail.com",
             subject: `New Course Enquiry - ${enquiryData.courseName}`,
             html: `
                 <h2>New Course Enquiry Received</h2>

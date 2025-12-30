@@ -251,7 +251,7 @@ const Home = () => {
         <div className="container-fluid pt-4">
           <div className="row reverceColumn">
             <div className="col-md-5 pb-2 courses-section">
-              <div className="content_title text-center">
+              <div className="content_title text-center mb-4">
                 <h2>Learn Astrology</h2>
               </div>
               <div className="Panchangdetail">
@@ -276,8 +276,8 @@ const Home = () => {
                 <div className="courses-list py-3">
                   <div className="row">
                     {[...courses].map((course, index) => {
-                      const iconExtensions = ['jpg', 'jpg', 'webp', 'jpg', 'jpg', 'jpg', 'jpg', 'webp', 'jpg'];
-                      const iconIndex = index % 9;
+                      const iconExtensions = ['jpg', 'jpg', 'png', 'jpg', 'jpg', 'jpg', 'jpg', 'jpeg', 'jpg', 'png', 'png', 'jpg'];
+                      const iconIndex = index % 12;
                       const iconExt = iconExtensions[iconIndex];
                       return (
                       <div key={index} className="col-md-4 col-12 mb-3">
@@ -351,7 +351,7 @@ const Home = () => {
                     </div>
                     <div className="services-grid pt-5">
                       <div className="row">
-                        {services.slice(0, 12).map((service, index) => (
+                        {services.slice(0, 9).map((service, index) => (
                           <div key={index} className="col-md-4 col-12 mt-3 mb-4">
                             <div className="text-center">
                               <img
@@ -374,6 +374,12 @@ const Home = () => {
                                   ₹{service.sericeFinalPrice}
                                 </span>
                               </p>
+                              {service.serviceDetails && (
+                                <p className="service-description">
+                                  {service.serviceDetails.split(" ").slice(0, 20).join(" ")}
+                                  {service.serviceDetails.split(" ").length > 20 && "..."}
+                                </p>
+                              )}
                               <Link
                                 to={`Service-Details/${service.serviceName}`}
                               >
@@ -390,7 +396,7 @@ const Home = () => {
                 </div>
                 <div className="ViewServicebtn pb-3">
                   <Link to="/OurServices">
-                    <button className="ViewAllbtn">View All</button>
+                    <button className="ViewAllbtn mt-3">View All</button>
                   </Link>
                 </div>
               </div>

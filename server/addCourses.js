@@ -112,6 +112,28 @@ const coursesData = [
     courseLogo: "Public/course-logo-10.jpg",
     courseImage: "Public/course-image-10.jpg",
     dropDownStatus: "True"
+  },
+  {
+    courseName: "Learn Financial Astrology",
+    courseHeading: "Wealth & Markets",
+    courseDetails: "Studies how planetary movements influence money, markets, wealth creation, and financial cycles.",
+    coursePrice: 5000,
+    courseFinalPrice: 3999,
+    courseDiscount: 1001,
+    courseLogo: "Public/course-logo-11.jpg",
+    courseImage: "Public/course-image-11.jpg",
+    dropDownStatus: "True"
+  },
+  {
+    courseName: "Mundane Astrology",
+    courseHeading: "World Events & Predictions",
+    courseDetails: "Studies world events such as politics, economy, wars, and natural disasters through planetary movements.",
+    coursePrice: 5200,
+    courseFinalPrice: 4099,
+    courseDiscount: 1101,
+    courseLogo: "Public/course-logo-12.jpg",
+    courseImage: "Public/course-image-12.jpg",
+    dropDownStatus: "True"
   }
 ];
 
