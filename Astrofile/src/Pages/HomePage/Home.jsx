@@ -287,6 +287,9 @@ const Home = () => {
                               src={`/icon${iconIndex + 1}.${iconExt}`} 
                               alt={course.courseName}
                               className="course-icon-img"
+                              onError={(e) => {
+                                e.target.src = '/icon1.jpg';
+                              }}
                             />
                           </div>
                           <div className="course-name-row">
@@ -411,27 +414,25 @@ const Home = () => {
                   <h2>News & Articles</h2>
                 </div>
                 <div className="row p-0 m-0">
-                  {blog.map((item, index) => {
-                    const newsIcons = ['icon1', 'icon2', 'icon3', 'icon4'];
-                    const iconIndex = index % 4;
-                    const iconExt = ['jpg', 'jpg', 'webp', 'jpg'][iconIndex];
-                    return (
+                  {blog.map((item, index) => (
                     <div className="col-md-3 col-6 mb-4" key={index}>
                       <div className="news">
                         <h5 className="card-title py-2">What's the news?</h5>
                         <img
-                          src={`/${newsIcons[iconIndex]}.${iconExt}`}
+                          src={item.blogImage ? `https://api.vedicjyotishe.com/${item.blogImage}` : `/icon${(index % 4) + 1}.${['jpg', 'jpg', 'png', 'jpg'][index % 4]}`}
                           className="card-img-top"
-                          alt="news icon"
+                          alt={item.blogHeading}
                           style={{ height: "150px", objectFit: "cover" }}
+                          onError={(e) => {
+                            e.target.src = `/icon${(index % 4) + 1}.${['jpg', 'jpg', 'png', 'jpg'][index % 4]}`;
+                          }}
                         />
                         <div className="card-body">
                           <p className="card-text">{item.blogHeading}</p>
 
                           <p className="card-description">
-                            {item.blogDetails}
-                            {item.blogDetails.split(" ").slice(0, 20).join(" ")}
-                            {item.blogDetails.split(" ").length > 20 && "..."}
+                            {item.blogDetails && item.blogDetails.split(" ").slice(0, 20).join(" ")}
+                            {item.blogDetails && item.blogDetails.split(" ").length > 20 && "..."}
                           </p>
                           <Link
                             onClick={handleActiveChange}
@@ -443,8 +444,7 @@ const Home = () => {
                         </div>
                       </div>
                     </div>
-                  );
-                  })}
+                  ))}
 
                   <div className="detail-blog">
                     <Link

@@ -127,7 +127,7 @@ const OurServices = () => {
                   <div className="container py-5">
                     <div className="row">
                       {services.map((service, index) => (
-                        <div key={index} className="col-md-4 col-6 any">
+                        <div key={index} className="col-md-3 col-6 any">
                           <div className="text-center">
                             <img data-aos="fade-up" data-aos-duration="2000" src={`https://api.vedicjyotishe.com/${service.serviceLogo}`} alt={service.title} className="img-fluid mb-2" style={{ height: "100px" }} />
                             <div className="imagetitle">

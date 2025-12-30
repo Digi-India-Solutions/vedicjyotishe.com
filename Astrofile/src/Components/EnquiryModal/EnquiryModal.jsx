@@ -230,7 +230,7 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
           <div className="form-group">
             <label>Are you currently a working professional?</label>
             <div className="checkbox-group">
-              {["Yes", "No", "Self-employed", "Student", "Homemaker"].map((option) => (
+              {["Yes", "No"].map((option) => (
                 <label key={option} className="checkbox-label">
                   <input
                     type="radio"
@@ -246,7 +246,7 @@ const EnquiryModal = ({ isOpen, onClose, selectedCourse }) => {
           </div>
 
           {/* Current Role (Optional) */}
-          {["Yes", "Self-employed"].includes(formData.workingProfessional) && (
+          {["Yes", "No"].includes(formData.workingProfessional) && (
             <div className="form-group">
               <input
                 type="text"
